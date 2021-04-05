@@ -18,6 +18,4 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
-# nuxt-app-cuisinierrebelle
-# nuxt-app-cuisinierrebelle-ssr
 # nuxt-app-cuisinierrebelle-ssr
