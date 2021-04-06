@@ -13,9 +13,6 @@
                 <img :src="item.user.image.thumb.url" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
                 {{ item.user.name }}
               </NuxtLink>
-              <!-- <span v-if="item.user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex ml-1">
-                <i class="material-icons md-16">check_circle</i>
-              </span> -->
             </div>
             <div class="d-none mr-3 btn btn-dark btn-sm py-0">
               Follow
@@ -24,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div v-if="$device.isMobile == false && (item.user.id === currentUser.id)" class="d-print-none">
+    <div v-if="$device.isDesktop && isRecipeOwner" class="d-print-none">
       <NuxtLink :to="`/r/${item.recipe.slug}/edit`" class="text-body text-capitalize text-decoration-none">
         {{ $t('recipe.edit') }}
       </NuxtLink>
@@ -34,6 +31,11 @@
         <BtnVisit :item="item" />
         <BtnComment :item="item" />
         <BtnShare :item="item" />
+        <div v-if="$device.isMobile && isRecipeOwner" class="d-print-none ml-3">
+          <NuxtLink :to="`/r/${item.recipe.slug}/edit`" class="text-body text-capitalize text-decoration-none">
+            <i :class="['material-icons', 'md-32']">edit</i>
+          </NuxtLink>
+        </div>
       </div>
       <div class="d-flex order-1 align-items-end">
         <BtnLike :item="item" />
@@ -67,7 +69,10 @@ export default {
   computed: {
     ...mapGetters({
       currentUser: 'users/sessions/current'
-    })
+    }),
+    isRecipeOwner () {
+      return this.item.user.id === this.currentUser.id
+    }
   }
 }
 </script>

@@ -1,6 +1,7 @@
 export default function ({ store, redirect }) {
   // If the user is not authenticated
-  if (!store.state.users.authentication.isAuthenticated) {
-    return redirect('/login')
+  const isAuthenticated = store.state.users.authentication.isAuthenticated
+  if (!isAuthenticated) {
+    return redirect({ name: 'login' })
   }
 }

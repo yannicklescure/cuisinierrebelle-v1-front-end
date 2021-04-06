@@ -31,7 +31,7 @@ import { mapGetters } from 'vuex'
 import VueMarkdownPlus from 'vue-markdown-plus'
 
 export default {
-  name: 'RecipeBody',
+  name: 'Body',
   components: {
     VueMarkdownPlus
   },

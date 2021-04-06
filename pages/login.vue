@@ -85,8 +85,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-// const FacebookLogin = () => import('../components/buttons/Facebook.vue')
+import { mapGetters, mapActions } from 'vuex'
 
 const capitalize = (s) => {
   if (typeof s !== 'string') {
@@ -119,6 +118,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      fetchNotifications: 'notifications/list'
+    }),
     isConnecting (value) {
       this.connecting = value
     },
@@ -221,6 +223,7 @@ export default {
         }
         const response = await this.$store.dispatch('users/sessions/logIn', payload)
         if (response.email === payload.email) {
+          this.fetchNotifications()
           const firstName = capitalize(response.first_name)
           this.$toast.success(this.$t('login.welcome', { firstName }), {
             position: 'bottom-center',

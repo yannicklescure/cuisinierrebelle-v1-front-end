@@ -169,13 +169,15 @@ export const actions = {
     return response
   },
   async bookmark (context, payload) {
-    const response = await api.bookmark(context, payload)
+    this.$axios.setHeader('Authorization', `Bearer ${this.state.users.sessions.authorization.authorizationToken}`)
+    const response = await this.$axios.$post('/v1/bookmarks', payload, {})
     this.commit('recipes/bookmark', payload)
     this.commit('users/sessions/bookmark', payload)
     return response
   },
   async unbookmark (context, payload) {
-    const response = await api.unbookmark(context, payload)
+    this.$axios.setHeader('Authorization', `Bearer ${this.state.users.sessions.authorization.authorizationToken}`)
+    const response = await this.$axios.$delete(`/v1/bookmarks/${payload.recipe_id}`, payload, {})
     this.commit('recipes/unbookmark', payload)
     this.commit('users/sessions/unbookmark', payload)
     return response

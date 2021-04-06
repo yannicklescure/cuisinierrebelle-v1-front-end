@@ -181,40 +181,6 @@ export const commentNew = async (context, payload) => {
   })
 }
 
-export const bookmark = async (context, payload) => {
-  return await axios({
-    validateStatus: (status) => {
-      return status < 500 // Resolve only if the status code is less than 500
-    },
-    method: 'post',
-    url: `${process.env.apiUrl}/v1/bookmarks`,
-    headers: {
-      Authorization: `Bearer ${context.rootState.users.sessions.authorization.authorizationToken}`
-    },
-    data: {
-      recipe_id: payload.recipe_id,
-      user_id: payload.user_id,
-      bookmark: {
-        recipe_id: payload.recipe_id,
-        user_id: payload.user_id
-      }
-    }
-  })
-}
-
-export const unbookmark = async (context, payload) => {
-  return await axios({
-    validateStatus: (status) => {
-      return status < 500 // Resolve only if the status code is less than 500
-    },
-    method: 'delete',
-    url: `${process.env.apiUrl}/v1/bookmarks/${payload.recipe_id}`,
-    headers: {
-      Authorization: `Bearer ${context.rootState.users.sessions.authorization.authorizationToken}`
-    }
-  })
-}
-
 export const follow = async (context, payload) => {
   return await axios({
     validateStatus: (status) => {
