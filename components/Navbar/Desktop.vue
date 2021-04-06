@@ -229,7 +229,6 @@ export default {
         .confirm(message, options)
         .then(async (dialog) => {
           // console.log('Clicked on proceed')
-          // DELETE FACEBOOK COOKIES c_user xs
           await this.$store.dispatch('users/sessions/logOut', {})
           if (this.$route.path !== '/') {
             this.$router.push({ path: '/' })

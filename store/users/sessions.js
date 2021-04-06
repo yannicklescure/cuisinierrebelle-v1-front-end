@@ -79,31 +79,32 @@ export const mutations = {
     // state.recipes[position].recipe.likes -= 1
   },
   logOut (state, payload) {
-    state.authorization = {
-      authorizationToken: null,
-      expireAt: null,
-      refreshToken: null
-    }
-
-    state.user = {
-      authentication_token: null,
-      bookmarks: [],
-      email: null,
-      facebookAuth: false,
-      followers: {
-        count: 0,
-        data: []
+    state = {
+      authorization: {
+        authorizationToken: null,
+        expireAt: null,
+        refreshToken: null
       },
-      following: {
-        count: 0,
-        data: []
-      },
-      image: {
-        openGraph: {
-          url: null
-        }
-      },
-      locale: 'fr'
+      user: {
+        authentication_token: null,
+        bookmarks: [],
+        email: null,
+        facebookAuth: false,
+        followers: {
+          count: 0,
+          data: []
+        },
+        following: {
+          count: 0,
+          data: []
+        },
+        image: {
+          openGraph: {
+            url: null
+          }
+        },
+        locale: 'fr'
+      }
     }
   },
   logIn (state, payload) {

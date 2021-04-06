@@ -234,14 +234,12 @@ export default {
 
       this.$dialog
         .confirm(message, options)
-        .then((dialog) => {
+        .then(async (dialog) => {
           // console.log('Clicked on proceed')
-          this.$store.dispatch('users/sessions/logOut', {})
-            .then((response) => {
-              if (response.status === 200 && this.$route.path !== '/') {
-                this.$router.push({ path: '/' })
-              }
-            })
+          await this.$store.dispatch('users/sessions/logOut', {})
+          if (this.$route.path !== '/') {
+            this.$router.push({ path: '/' })
+          }
         })
         .catch(() => {
           // console.log('Clicked on cancel')

@@ -26,7 +26,7 @@
             {{ $t('user.banner.memberSince', { date: userCreatedAt(user.createdAt) }) }}
           </div>
           <div class="d-flex align-items-center text-secondary">
-            <small>{{ $tc('userBanner.recipes', count) }}</small>
+            <small>{{ $tc('userBanner.recipes', countUserRecipes) }}</small>
             <span>&nbsp;/&nbsp;</span>
             <NuxtLink
               :to="`/u/${ user.slug }/followers`"
@@ -69,10 +69,14 @@ export default {
   },
   computed: {
     ...mapGetters({
+      getUserRecipes: 'recipes/user',
       currentUser: 'users/sessions/current'
     }),
     countFollowers () {
-      return this.user.followers.count
+      return this.user.followers.data.length
+    },
+    countUserRecipes () {
+      return this.getUserRecipes(this.user.slug).length
     }
   },
   methods: {
