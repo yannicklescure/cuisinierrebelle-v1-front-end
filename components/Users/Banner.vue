@@ -26,7 +26,12 @@
             {{ $t('user.banner.memberSince', { date: userCreatedAt(user.createdAt) }) }}
           </div>
           <div class="d-flex align-items-center text-secondary">
-            <small>{{ $tc('userBanner.recipes', countUserRecipes) }}</small>
+            <NuxtLink
+              :to="`/u/${ user.slug }`"
+              class="d-flex align-items-center text-decoration-none text-secondary"
+            >
+              <small>{{ $tc('userBanner.recipes', countUserRecipes) }}</small>
+            </NuxtLink>
             <span>&nbsp;/&nbsp;</span>
             <NuxtLink
               :to="`/u/${ user.slug }/followers`"
