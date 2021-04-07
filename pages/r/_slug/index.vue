@@ -30,9 +30,12 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Recipe',
-  async asyncData ({ $axios, params }) {
-    const item = await $axios.$get(`/v1/recipes/${params.slug}`)
-    return { item }
+  async asyncData ({ $axios, params, payload }) {
+    if (payload) {
+      return { item: payload }
+    } else {
+      return { item: await $axios.$get(`/v1/recipes/${params.slug}`) }
+    }
   },
   data () {
     return {

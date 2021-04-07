@@ -1,3 +1,4 @@
+import axios from 'axios'
 import getRoutes from "./utils/getRoutes";
 
 export default {
@@ -15,6 +16,19 @@ export default {
     //     component: resolve(__dirname, 'pages/404.vue')
     //   })
     // }
+  },
+
+  generate: {
+    routes() {
+      return axios.get('https://api.cuisinierrebelle.com/v1/state').then(res => {
+        return res.data.recipes.map(item => {
+          return {
+            route: '/r/' + item.recipe.slug,
+            payload: item
+          }
+        })
+      })
+    }
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
