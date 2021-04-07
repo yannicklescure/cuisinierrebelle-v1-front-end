@@ -1,3 +1,5 @@
+import getRoutes from "./utils/getRoutes";
+
 export default {
 
   // ssr: true,
@@ -198,11 +200,28 @@ export default {
 
   sitemap: {
     hostname: 'https://www.cuisinierrebelle.com',
-    trailingSlash: false,
     gzip: true,
-    exclude: [
-      '/admin/**'
-    ],
+    sitemaps: [
+      {
+        path: '/sitemap.xml',
+        cacheTime: 1000 * 60 * 60 * 2,
+        trailingSlash: false,
+        exclude: [
+          '/admin/**'
+        ]
+      },
+      {
+        path: '/sitemap-recipes.xml',
+        cacheTime: 1000 * 60 * 60 * 2,
+        trailingSlash: false,
+        routes() {
+          return getRoutes()
+        },
+        exclude: [
+          '/**'
+        ]
+      }
+    ]
   },
 
   'google-adsense': {
