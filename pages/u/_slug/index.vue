@@ -1,17 +1,16 @@
 <template>
-  <div>
-    <div v-if="$fetchState.error">
-      <NotFound />
-    </div>
-    <div v-else-if="show">
-      <SocialHead
-        :title="user.name"
-        :description="'Partagez vos recettes dès maintenant en toute simplicité'"
-        :image="user.image.openGraph.url"
-      />
-      <UsersBanner :user="user" />
-      <Cards v-if="recipes.length > 0" :recipes="userRecipes" />
-    </div>
+  <div v-if="$fetchState.error">
+    <NotFound />
+  </div>
+  <div v-else-if="show">
+    <nuxt keep-alive />
+    <SocialHead
+      :title="user.name"
+      :description="'Partagez vos recettes dès maintenant en toute simplicité'"
+      :image="user.image.openGraph.url"
+    />
+    <UsersBanner :user="user" />
+    <Cards v-if="recipes.length > 0" :recipes="userRecipes" />
   </div>
 </template>
 

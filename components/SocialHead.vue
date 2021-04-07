@@ -3,6 +3,8 @@
 </template>
 
 <script>
+// Test on: https://cards-dev.twitter.com/validator
+// Test on: https://developers.facebook.com/tools/debug/
 export default {
   props: {
     title: {
@@ -18,7 +20,7 @@ export default {
       default: 'https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg'
     }
   },
-  head() {
+  head () {
     return {
       title: this.title,
       meta: [
@@ -30,7 +32,7 @@ export default {
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: `Cuisinier Rebelle | ${ this.title }`
+          content: `Cuisinier Rebelle | ${this.title}`
         },
         {
           hid: 'twitter:description',
@@ -50,7 +52,7 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `Cuisinier Rebelle | ${ this.title }`
+          content: `Cuisinier Rebelle | ${this.title}`
         },
         {
           hid: 'og:description',
@@ -74,6 +76,6 @@ export default {
         }
       ]
     }
-  },
+  }
 }
 </script>

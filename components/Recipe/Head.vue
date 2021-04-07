@@ -7,11 +7,19 @@
             <div class="mr-md-2 d-flex align-items-center">
               <NuxtLink
                 :to="`/u/${ item.user.slug }`"
-                class="text-body text-capitalize"
+                class="text-body d-flex align-items-center"
                 style="font-size: 90%"
               >
-                <img :src="item.user.image.thumb.url" width="24px" height="24px" class="rounded-circle mr-2" style="object-fit: cover;">
-                {{ item.user.name }}
+                <img
+                  :src="item.user.image.thumb.url"
+                  width="24px"
+                  height="24px"
+                  class="rounded-circle mr-2"
+                  style="object-fit: cover;"
+                >
+                <div class="text-capitalize">
+                  {{ item.user.name }}
+                </div>
               </NuxtLink>
             </div>
             <div class="d-none mr-3 btn btn-dark btn-sm py-0">

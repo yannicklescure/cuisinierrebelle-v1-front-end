@@ -2,7 +2,7 @@ import getRoutes from "./utils/getRoutes";
 
 export default {
 
-  // ssr: true,
+  ssr: true,
   target: 'server',
   resourceHints: true,
 
@@ -228,7 +228,7 @@ export default {
     id: 'ca-pub-9223566768445571',
     analyticsDomainName: 'cuisinierrebelle.com',
     analyticsUacct: 'UA-155962082-1',
-    // onPageLoad: true,
+    onPageLoad: true,
   },
 
   i18n: {

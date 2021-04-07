@@ -13,11 +13,10 @@
           class="rounded-circle mr-2"
           style="object-fit: cover;"
         >
-        <div class="text-capitalize">{{ item.user.name }}</div>
+        <div class="text-capitalize">
+          {{ item.user.name }}
+        </div>
       </NuxtLink>
-<!--       <span v-if="item.user.checked" data-toggle="tooltip" data-placement="top" title="Verified" class="d-flex px-1">
-        <i class="material-icons md-16">verified_user</i>
-      </span> -->
     </div>
   </div>
 </template>
@@ -26,6 +25,11 @@
 
 export default {
   name: 'CardHead',
-  props: ['item']
+  props: {
+    item: {
+      type: Object,
+      default: null
+    }
+  }
 }
 </script>
