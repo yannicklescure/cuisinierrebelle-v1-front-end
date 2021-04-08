@@ -16,33 +16,30 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Banner',
-  // props: ['image'],
+  async fetch () {
+    const obj = this.$store.state.banner.image
+    if (obj.id == null || !obj.timestamp || parseInt(new Date().getTime() - obj.timestamp) > 1000 * 60 * 60 * 24) {
+      await this.getBannerImage()
+    }
+  },
   computed: {
     ...mapGetters({
       image: 'banner/image'
     }),
     viewport () {
-      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
       return {
-        height: vh,
-        width: vw
+        height: process.client ? Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) : 0,
+        width: process.client ? Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) : 0
       }
     },
     imageUrl () {
-      return `${this.image.url}&w=${this.viewport.width}&h=${this.viewport.height}&fm=webp`
+      return process.client ? `${this.image.url}&w=${this.viewport.width}&h=${this.viewport.height}&fm=webp` : null
     }
   },
   methods: {
     ...mapActions({
       getBannerImage: 'banner/get'
     })
-  },
-  async fetch () {
-    const obj = this.$store.state.banner.image
-    if (obj.id == null || !obj.timestamp || parseInt(new Date().getTime() - obj.timestamp) > 1000 * 60 * 60 * 24) {
-      await this.getBannerImage()
-    }
   }
 }
 </script>

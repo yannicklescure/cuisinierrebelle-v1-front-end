@@ -1,19 +1,9 @@
-import axios from 'axios'
 import getRoutes from "./utils/getRoutes";
 
 export default {
 
-  // target: 'server',
-
   router: {
-    trailingSlash: false,
-    // extendRoutes(routes, resolve) {
-    //   routes.push({
-    //     name: 'custom',
-    //     path: '*',
-    //     component: resolve(__dirname, 'pages/404.vue')
-    //   })
-    // }
+    trailingSlash: false
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -152,12 +142,6 @@ export default {
     optimizeImages: true
   },
 
-  publicRuntimeConfig: {
-    axios: {
-      baseURL: 'https://api.cuisinierrebelle.com'
-    }
-  },
-
   // Modules: https://go.nuxtjs.dev/config-modules
   // Modules - https://www.cuisinierrebelle.com/docs/2.x/directory-structure/modules
   // If you use other modules, always declare the sitemap module at end of array
@@ -178,7 +162,12 @@ export default {
     '@nuxtjs/sitemap'
   ],
 
-  // [optional] markdownit options
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: 'https://api.cuisinierrebelle.com'
+    }
+  },
+
   // See https://github.com/markdown-it/markdown-it
   markdownit: {
     preset: 'default',
@@ -258,19 +247,6 @@ export default {
     position: 'bottom-center',
   },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    extractCSS: true,
-    terser: {
-      // https://github.com/terser/terser#compress-options
-      terserOptions: {
-        compress: {
-          drop_console: true
-        },
-      },
-    },
-  },
-
   // https://pwa.nuxtjs.org/manifest
   pwa: {
     meta: {
@@ -288,6 +264,19 @@ export default {
 
   googleAnalytics: {
     id: 'UA-155962082-1',
+  },
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {
+    extractCSS: true,
+    terser: {
+      // https://github.com/terser/terser#compress-options
+      terserOptions: {
+        compress: {
+          drop_console: true
+        },
+      },
+    },
   },
 
   env: {

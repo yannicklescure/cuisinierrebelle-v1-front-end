@@ -19,42 +19,19 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// const UserNotifications = () => import('../components/UserNotifications.vue')
 
 export default {
   name: 'UserSettings',
-  // middleware: 'authenticated',
   middleware: ['authenticated', 'authorization'],
   data () {
     return {
-      componentKey: 0,
-      // navbarHeight: 0,
+      componentKey: 0
     }
   },
-  // components: {
-    // UserNotifications,
-  // },
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/current',
-    }),
-  },
-  // methods: {
-    // getNavbarHeight () {
-    //   return this.$store.getters.navbarHeight
-    // },
-  // },
-  // beforeMount () {
-  //   if (this.$route.params.slug === this.currentUser.slug) this.show = true
-  //   else {
-  //     console.log('ALERT')
-  //     this.$router.push({
-  //       path: '/'
-  //     })
-  //   }
-  // },
-  // mounted () {
-    // this.navbarHeight = this.getNavbarHeight()
-  // }
+      currentUser: 'users/sessions/current'
+    })
+  }
 }
 </script>

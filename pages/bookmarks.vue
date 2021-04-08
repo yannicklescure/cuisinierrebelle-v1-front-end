@@ -19,19 +19,23 @@ export default {
   //     en: '/bookmarks', // -> accessible at /en/bookmarks
   //   }
   // },
-  methods: {
-    ...mapActions(['getStoreData']),
+  async fetch () {
+    let refresh = true
+    if (this.timestamp != null) {
+      refresh = new Date().getTime() - this.timestamp > 60 * 1000 * 3
+    }
+    if (refresh) {
+      await this.getStoreData()
+    }
   },
   computed: {
     ...mapGetters({
       recipes: 'users/sessions/bookmarks',
-      timestamp: 'timestamp',
-    }),
+      timestamp: 'timestamp'
+    })
   },
-  async fetch () {
-    let refresh = true
-    if (this.timestamp != null) refresh = new Date().getTime() - this.timestamp > 60*1000*3
-    if (refresh) await this.getStoreData()
-  },
+  methods: {
+    ...mapActions(['getStoreData'])
+  }
 }
 </script>

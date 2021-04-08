@@ -65,7 +65,7 @@ export default {
     // }
   },
   mounted () {
-    // this.$store.commit('recipes/recipe', this.item)
+    this.$store.commit('recipes/recipe', this.item)
     this.$nextTick(async () => {
       await this.matchInfoBox()
       window.addEventListener('resize', this.matchInfoBox)
@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      getRecipe: 'recipes/recipe',
+      // getRecipe: 'recipes/recipe',
       getStoreData: 'getStoreData'
     }),
     refresh () {

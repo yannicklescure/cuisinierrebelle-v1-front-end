@@ -8,15 +8,15 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Search',
   computed: {
     ...mapGetters({
       navbarHeight: 'navbarHeight',
-      recipes: 'search/result',
-    }),
-  },
+      recipes: 'search/result'
+    })
+  }
 }
 </script>

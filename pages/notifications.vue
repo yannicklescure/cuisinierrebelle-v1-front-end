@@ -4,7 +4,7 @@
       <NotFound />
     </div>
     <div v-else class="container py-2">
-      <div v-for="item, i in items" class="d-flex flex-column">
+      <div v-for="item, i in items" :key="i" class="d-flex flex-column">
         <div class="d-flex align-items-start rounded bg-light my-2 p-2">
           <NuxtLink :to="`/u/${ item.user.slug }`">
             <img
@@ -59,15 +59,19 @@ export default {
       componentKey: 0,
       enough: false,
       items: [],
-      show: false,
+      show: false
     }
   },
   middleware: 'authenticated',
+  async fetch () {
+    await this.fetchNotifications()
+    this.show = true
+  },
   computed: {
     ...mapGetters({
       currentUser: 'users/sessions/current',
-      notifications: 'notifications/listSorted',
-    }),
+      notifications: 'notifications/listSorted'
+    })
   },
   methods: {
     ...mapActions({
@@ -89,16 +93,14 @@ export default {
     },
     getData () {
       const qty = this.items.length + 20 > this.notifications.length ? this.notifications.length - this.items.length : 20
-      if (qty != 20) this.enough = true
+      if (qty !== 20) {
+        this.enough = true
+      }
       this.items = this.items.concat(this.notifications.slice(this.items.length, this.items.length + qty))
     }
   },
-  async fetch () {
-    await this.fetchNotifications()
-    this.show = true
-  },
   mounted () {
     this.getData()
-  },
+  }
 }
 </script>
