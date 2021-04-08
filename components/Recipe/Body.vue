@@ -22,19 +22,15 @@
       :style="`object-fit: cover;`"
       :alt="item.recipe.slug"
     >
-    <vue-markdown-plus :source="item.recipe.direction" />
+    <Markdown :source="item.recipe.direction" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import VueMarkdownPlus from 'vue-markdown-plus'
 
 export default {
   name: 'Body',
-  components: {
-    VueMarkdownPlus
-  },
   props: {
     item: {
       type: Object,

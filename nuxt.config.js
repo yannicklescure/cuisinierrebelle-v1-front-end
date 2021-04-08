@@ -3,8 +3,7 @@ import getRoutes from "./utils/getRoutes";
 
 export default {
 
-  target: 'server',
-  resourceHints: true,
+  // target: 'server',
 
   router: {
     trailingSlash: false,
@@ -16,19 +15,6 @@ export default {
     //   })
     // }
   },
-
-  // generate: {
-  //   routes () {
-  //     return axios.get('https://api.cuisinierrebelle.com/v1/state').then(res => {
-  //       return res.data.recipes.map(item => {
-  //         return {
-  //           route: '/r/' + item.recipe.slug,
-  //           payload: item
-  //         }
-  //       })
-  //     })
-  //   }
-  // },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -158,9 +144,9 @@ export default {
     ]
   ],
 
-  eslint: {
+  // eslint: {
     // fix: true
-  },
+  // },
 
   optimizedImages: {
     optimizeImages: true
@@ -185,11 +171,24 @@ export default {
     'nuxt-webfontloader',
     '@forked-prs/nuxt-infinite-scroll-module',
     'vue-social-sharing/nuxt',
+    '@nuxtjs/markdownit',
     '@nuxtjs/toast',
     '@nuxtjs/google-adsense',
     "@nuxtjs/robots",
     '@nuxtjs/sitemap'
   ],
+
+  // [optional] markdownit options
+  // See https://github.com/markdown-it/markdown-it
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    use: [
+      'markdown-it-div',
+      'markdown-it-attrs'
+    ]
+  },
 
   webfontloader: {
     custom: {
@@ -262,7 +261,6 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extractCSS: true,
-    optimizeCSS: true,
     terser: {
       // https://github.com/terser/terser#compress-options
       terserOptions: {

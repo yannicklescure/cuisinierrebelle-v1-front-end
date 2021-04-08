@@ -19,7 +19,7 @@
         </NuxtLink>
       </div>
       <div>
-        <vue-markdown-plus :source="item.content" />
+        <Markdown :source="item.content" />
       </div>
     </div>
   </div>
@@ -27,13 +27,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import VueMarkdownPlus from 'vue-markdown-plus'
 
 export default {
   name: 'Page',
-  components: {
-    VueMarkdownPlus
-  },
   data () {
     return {
       componentKey: 0,

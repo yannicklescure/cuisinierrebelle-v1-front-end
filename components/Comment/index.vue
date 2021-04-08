@@ -28,7 +28,7 @@
       />
     </div>
     <div v-else class="pt-2">
-      <vue-markdown-plus :source="item.content" class="text-break" />
+      <Markdown :source="item.content" class="text-break" />
     </div>
     <CommentButtons
       :item="item"
@@ -50,14 +50,10 @@
 </template>
 
 <script>
-import VueMarkdownPlus from 'vue-markdown-plus'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'Comment',
-  components: {
-    VueMarkdownPlus
-  },
   props: {
     item: {
       type: Object,
