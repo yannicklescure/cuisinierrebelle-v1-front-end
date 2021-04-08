@@ -1,27 +1,29 @@
 <template>
   <div ref="recipe" class="container py-3 mb-5 recipe">
-    <SocialHead
-      :title="item.recipe.title"
-      :description="item.recipe.description"
-      :image="item.recipe.photo.openGraph.url"
-    />
-    <RecipeHead :item="item" />
-    <RecipeBody :item="item" :dimension="dimension" />
+    <div v-if="show">
+      <SocialHead
+        :title="item.recipe.title"
+        :description="item.recipe.description"
+        :image="item.recipe.photo.openGraph.url"
+      />
+      <RecipeHead :item="item" />
+      <RecipeBody :item="item" :dimension="dimension" />
 
-    <LazyYoutube :item="item" />
+      <LazyYoutube :item="item" />
 
-    <LazyBtnSocialSharing v-if="$device.isMobile == false" :item="item" />
+      <LazyBtnSocialSharing v-if="$device.isMobile == false" :item="item" />
 
-    <div class="w-100 my-5">
-      <LazyRecipeAds />
+      <div class="w-100 my-5">
+        <LazyRecipeAds />
+      </div>
+
+      <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
+
+      <Comments
+        :item="item"
+        @refresh="$fetch"
+      />
     </div>
-
-    <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
-
-    <Comments
-      :item="item"
-      @refresh="$fetch"
-    />
   </div>
 </template>
 
@@ -30,13 +32,9 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Recipe',
-  async asyncData ({ $axios, params, payload }) {
-    if (payload) {
-      return { item: payload }
-    } else {
-      return { item: await $axios.$get(`/v1/recipes/${params.slug}`) }
-    }
-  },
+  // async asyncData ({ $axios, params }) {
+  //   return { item: await $axios.$get(`/v1/recipes/${params.slug}`) }
+  // },
   data () {
     return {
       dimension: {
@@ -48,7 +46,7 @@ export default {
   async fetch () {
     // TO DO
     // check if recipe exists in store or fetch
-    // await this.getRecipe(this.$route.params.slug)
+    await this.getRecipe(this.$route.params.slug)
     let refresh = true
     if (this.timestamp !== null) {
       refresh = new Date().getTime() - this.timestamp > 60 * 1000 * 3
@@ -59,31 +57,29 @@ export default {
   },
   computed: {
     ...mapGetters({
-      recipe: 'recipes/recipe',
+      // recipe: 'recipes/recipe',
       recipes: 'recipes/list',
       timestamp: 'timestamp'
     }),
-    // item () {
-    //   return this.recipe(this.$route.params.slug)
-    // },
+    item () {
+      const position = this.recipes.findIndex(item => item.recipe.slug === this.$route.params.slug)
+      return position > -1 ? this.recipes[position] : undefined
+    },
     show () {
       return this.item !== undefined
-    },
-    isProduction () {
-      return location.hostname !== 'localhost'
     }
   },
   mounted () {
     // this.$store.commit('recipes/recipe', this.item)
-    this.$nextTick(() => {
-      this.matchInfoBox()
+    this.$nextTick(async () => {
+      await this.matchInfoBox()
+      window.addEventListener('resize', this.matchInfoBox)
     })
-    window.addEventListener('resize', this.matchInfoBox)
   },
   methods: {
     ...mapActions({
-      getStoreData: 'getStoreData'
-      // getRecipe: 'recipes/recipe'
+      getStoreData: 'getStoreData',
+      getRecipe: 'recipes/recipe'
     }),
     refresh () {
       this.$fetch()
