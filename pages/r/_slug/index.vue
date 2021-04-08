@@ -1,9 +1,9 @@
 <template>
   <div ref="recipe" class="container py-3 mb-5 recipe">
     <SocialHead
-      :title="item.recipe.title"
-      :description="item.recipe.description"
-      :image="item.recipe.photo.openGraph.url"
+      :title="socialMetaData.title"
+      :description="socialMetaData.description"
+      :image="socialMetaData.image"
     />
     <RecipeHead :item="item" />
     <RecipeBody :item="item" :dimension="dimension" />
@@ -28,11 +28,15 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
+const truncate = (str, n) => {
+  return (str.length > n) ? str.substr(0, n - 1) + '&hellip;' : str
+}
+
 export default {
   name: 'Recipe',
-  async asyncData ({ $axios, params }) {
-    return { item: await $axios.$get(`/v1/recipes/${params.slug}`) }
-  },
+  // async asyncData ({ $axios, params }) {
+  //   return { item: await $axios.$get(`/v1/recipes/${params.slug}`) }
+  // },
   data () {
     return {
       dimension: {
@@ -44,7 +48,7 @@ export default {
   async fetch () {
     // TO DO
     // check if recipe exists in store or fetch
-    // await this.getRecipe(this.$route.params.slug)
+    await this.getRecipe(this.$route.params.slug)
     let refresh = true
     if (this.timestamp !== null) {
       refresh = new Date().getTime() - this.timestamp > 60 * 1000 * 3
@@ -58,11 +62,18 @@ export default {
       // recipe: 'recipes/recipe',
       recipes: 'recipes/list',
       timestamp: 'timestamp'
-    })
-    // item () {
-    //   const position = this.recipes.findIndex(item => item.recipe.slug === this.$route.params.slug)
-    //   return position > -1 ? this.recipes[position] : undefined
-    // }
+    }),
+    item () {
+      const position = this.recipes.findIndex(item => item.recipe.slug === this.$route.params.slug)
+      return position > -1 ? this.recipes[position] : undefined
+    },
+    socialMetaData () {
+      return {
+        title: this.item.recipe.title,
+        description: truncate(this.item.recipe.description, 160),
+        image: this.item.recipe.photo.openGraph.url
+      }
+    }
   },
   mounted () {
     this.$store.commit('recipes/recipe', this.item)
@@ -73,7 +84,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      // getRecipe: 'recipes/recipe',
+      getRecipe: 'recipes/recipe',
       getStoreData: 'getStoreData'
     }),
     refresh () {

@@ -52,7 +52,7 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `Cuisinier Rebelle | ${this.title}`
+          content: `${this.title}`
         },
         {
           hid: 'og:description',

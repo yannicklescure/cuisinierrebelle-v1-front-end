@@ -1,13 +1,10 @@
 <template>
-  <div v-if="$fetchState.error">
-    <NotFound />
-  </div>
-  <div v-else-if="show">
+  <div>
     <nuxt keep-alive />
     <SocialHead
-      :title="user.name"
-      :description="'Partagez vos recettes dès maintenant en toute simplicité'"
-      :image="user.image.openGraph.url"
+      :title="socialMetaData.title"
+      :description="socialMetaData.description"
+      :image="socialMetaData.image"
     />
     <UsersBanner :user="user" />
     <Cards v-if="recipes.length > 0" :recipes="userRecipes" />
@@ -19,11 +16,9 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'User',
-  data () {
-    return {
-      show: false
-    }
-  },
+  // async asyncData ({ $axios, params }) {
+  //   return { item: await $axios.$get(`/v1/users/${params.slug}`) }
+  // },
   async fetch () {
     await this.getUser(this.$route.params.slug)
     let refresh = true
@@ -33,7 +28,6 @@ export default {
     if (refresh) {
       await this.getStoreData()
     }
-    this.show = true
   },
   computed: {
     ...mapGetters({
@@ -45,15 +39,23 @@ export default {
     }),
     user () {
       return this.usersFilter(this.$route.params.slug)
+      // return this.item.data
     },
     userRecipes () {
       return this.getUserRecipes(this.$route.params.slug)
+    },
+    socialMetaData () {
+      return {
+        title: this.user.name,
+        description: 'Partagez vos recettes dès maintenant en toute simplicité',
+        image: this.user.image.openGraph.url
+      }
     }
   },
   methods: {
     ...mapActions({
-      getStoreData: 'getStoreData',
-      getUser: 'users/getUser'
+      getUser: 'users/getUser',
+      getStoreData: 'getStoreData'
     })
   }
 }
