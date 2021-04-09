@@ -8,6 +8,9 @@
     <div class="container d-flex cr-vh100">
       <div class="d-flex flex-grow-1 justify-content-center align-items-center">
         <div class="d-flex flex-column align-items-center w-md-50">
+          <b-alert v-model="showDismissibleAlert" variant="danger" dismissible>
+            {{ $t('error.login') }}
+          </b-alert>
           <div v-if="!connecting">
             <form>
               <div class="form-group my-2">
@@ -106,7 +109,8 @@ export default {
       },
       errors: [],
       error: false,
-      posting: false
+      posting: false,
+      showDismissibleAlert: false
     }
   },
   computed: {
@@ -234,9 +238,13 @@ export default {
             this.$router.push({ path: '/' })
           } else {
             this.disabled = false
+            this.posting = false
           }
         } catch (e) {
           this.errors.push(e.response.data.message)
+          this.showDismissibleAlert = true
+          this.disabled = false
+          this.posting = false
         }
       } else {
         this.$toast.error(this.errors[0], {

@@ -134,9 +134,9 @@ export default {
     ]
   ],
 
-  // eslint: {
-    // fix: true
-  // },
+  eslint: {
+    fix: true
+  },
 
   optimizedImages: {
     optimizeImages: true

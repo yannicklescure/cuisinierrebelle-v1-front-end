@@ -1,10 +1,11 @@
 export default async (context, locale) => {
   return await Promise.resolve({
     init: {
-      loading: 'Chargement...',
+      loading: 'Chargement...'
     },
     error: {
       failed: 'Nous sommes désolés, nous ne sommes pas en mesure de récupérer ces informations pour le moment, veuillez réessayer plus tard',
+      login: `L'adresse courriel ou le mot de passe est invalide.`
     },
     notFound: {
       title: 'Erreur HTTP 404',
