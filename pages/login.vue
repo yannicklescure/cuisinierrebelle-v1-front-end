@@ -14,7 +14,7 @@
                 <label for="inputEmail">{{ $t('login.email') }}</label>
                 <input
                   id="inputEmail"
-                  v-model="email"
+                  v-model="login.email"
                   type="email"
                   class="form-control"
                   aria-describedby="emailHelp"
@@ -25,7 +25,7 @@
               <div class="input-group mb-3">
                 <input
                   ref="password"
-                  v-model="password"
+                  v-model="login.password"
                   type="password"
                   class="form-control"
                   aria-describedby="button-password"
@@ -56,7 +56,7 @@
                   type="submit"
                   class="btn btn-dark my-2 w-100"
                   :disabled="disabled"
-                  @click.stop.prevent="login"
+                  @click.stop.prevent="userLogin"
                 >
                   {{ $t('login.submit') }}
                 </button>
@@ -100,8 +100,10 @@ export default {
     return {
       connecting: false,
       disabled: true,
-      email: null,
-      password: null,
+      login: {
+        email: null,
+        password: null
+      },
       errors: [],
       error: false,
       posting: false
@@ -125,7 +127,7 @@ export default {
       this.connecting = value
     },
     allowPost () {
-      if (this.email && this.password) {
+      if (this.login.email && this.login.password) {
         this.disabled = false
       } else {
         this.disabled = true
@@ -149,19 +151,19 @@ export default {
     },
     checkForm () {
       this.errors = []
-      if (!this.email) {
+      if (!this.login.email) {
         this.errors.push(this.$t('signUp.errors.email'))
         return false
       }
-      if (!this.validateEmail(this.email)) {
+      if (!this.validateEmail(this.login.email)) {
         this.errors.push(this.$t('signUp.errors.emailFormat'))
         return false
       }
-      if (!this.password) {
+      if (!this.login.password) {
         this.errors.push(this.$t('signUp.errors.password'))
         return false
       }
-      if (this.password.split('').length < 3) {
+      if (this.login.password.split('').length < 3) {
         this.errors.push(this.$t('signUp.errors.passwordLength'))
         return false
       }
@@ -169,10 +171,10 @@ export default {
     },
     async resendConfirmationInstructions () {
       this.errors = []
-      if (!this.email) {
+      if (!this.login.email) {
         this.errors.push(this.$t('signUp.errors.email'))
       }
-      if (!this.validateEmail(this.email)) {
+      if (!this.validateEmail(this.login.email)) {
         this.errors.push(this.$t('signUp.errors.emailFormat'))
       }
       if (this.errors.length > 0) {
@@ -184,7 +186,7 @@ export default {
       } else {
         const payload = {
           user: {
-            email: this.email
+            email: this.login.email
           }
         }
         await this.$store.dispatch('resendConfirmationInstructions', payload)
@@ -194,8 +196,8 @@ export default {
                 position: 'bottom-center',
                 duration: 3000
               })
-              this.email = null
-              this.password = null
+              this.login.email = null
+              this.login.password = null
               this.$router.push({ path: '/' })
             } else {
               this.errors.push(result.data.error)
@@ -212,25 +214,26 @@ export default {
           })
       }
     },
-    async login () {
+    async userLogin () {
       const checkForm = this.checkForm()
       if (checkForm) {
         this.disabled = true
         this.posting = true
-        const payload = {
-          email: this.email,
-          password: this.password
-        }
-        const response = await this.$store.dispatch('users/sessions/logIn', payload)
-        if (response.email === payload.email) {
+        // const payload = {
+        //   email: this.login.email,
+        //   password: this.login.password
+        // }
+        const response = await this.$store.dispatch('users/sessions/logIn', this.login)
+        if (response.email === this.login.email) {
+          // await this.dispatch('users/sessions/user', null)
           this.fetchNotifications()
           const firstName = capitalize(response.first_name)
           this.$toast.success(this.$t('login.welcome', { firstName }), {
             position: 'bottom-center',
             duration: 3000
           })
-          this.email = null
-          this.password = null
+          this.login.email = null
+          this.login.password = null
           this.$router.push({ path: '/' })
         } else {
           this.disabled = false

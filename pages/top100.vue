@@ -9,7 +9,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Top100',
-  middleware: 'authenticated',
+  middleware: 'authentication',
   async fetch () {
     let refresh = true
     if (this.timestamp != null) {

@@ -32,7 +32,7 @@ export const actions = {
     this.commit('users/setStoreData', response)
     await this.dispatch('users/authentication/isAuthenticated', null)
     if (this.state.users.authentication.isAuthenticated) {
-      this.dispatch('users/sessions/currentState', null)
+      this.dispatch('users/sessions/user', null)
     }
     return response
   },

@@ -38,7 +38,7 @@ import imageCompression from 'browser-image-compression'
 
 export default {
   name: 'UserPicture',
-  middleware: ['authenticated', 'authorization'],
+  middleware: ['authentication', 'authorization'],
   data () {
     return {
       disabled: true,

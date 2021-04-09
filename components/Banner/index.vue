@@ -1,13 +1,15 @@
 <template>
-  <div class="mb-2 d-flex justify-content-center justify-content-md-center align-items-center flex-column">
-    <div
-      ref="banner"
-      :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ imageUrl }')`"
-      class="banner-background banner-height d-flex flex-column w-100 justify-content-between bg-light"
-    >
-      <BannerCta />
-      <BannerUnsplash :image="image" />
-    </div>
+  <div class="mb-2 d-flex flex-column justify-content-center align-items-center">
+    <client-only>
+      <div
+        ref="banner"
+        :style="`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('${ imageUrl }')`"
+        class="banner-background banner-height d-flex flex-column w-100 justify-content-between bg-light"
+      >
+        <BannerCta />
+        <BannerUnsplash :image="image" />
+      </div>
+    </client-only>
   </div>
 </template>
 

@@ -14,26 +14,34 @@
               height="32"
               style="object-fit: cover;"
             >
-           </NuxtLink>
+          </NuxtLink>
           <div class="ml-3 d-flex flex-column">
             <div class="d-flex align-items-center" style="font-size: 90%;">
               <NuxtLink
                 v-if="item.type === 'recipe'"
                 :to="`${ item.slug }`"
                 class="text-body"
-              >{{ $t('notifications.like.recipe', { user: item.user.name }) }}</NuxtLink>
+              >
+                {{ $t('notifications.like.recipe', { user: item.user.name }) }}
+              </NuxtLink>
               <NuxtLink
                 v-if="item.type === 'comment'"
                 :to="`${ item.slug }`"
                 class="text-body"
-              >{{ $t('notifications.like.comment', { user: item.user.name }) }}</NuxtLink>
+              >
+                {{ $t('notifications.like.comment', { user: item.user.name }) }}
+              </NuxtLink>
               <NuxtLink
                 v-if="item.type === 'reply'"
                 :to="`${ item.slug }`"
                 class="text-body"
-              >{{ $t('notifications.like.reply', { user: item.user.name }) }}</NuxtLink>
+              >
+                {{ $t('notifications.like.reply', { user: item.user.name }) }}
+              </NuxtLink>
             </div>
-            <small class="text-muted">{{ timeAgo(item.timestamp) }}</small>
+            <small class="text-muted">
+              {{ timeAgo(item.timestamp) }}
+            </small>
             <div class="small text-muted">
               {{ item.title }}
             </div>
@@ -41,7 +49,7 @@
         </div>
       </div>
       <InfiniteScroll :enough="enough" @load-more="getData()">
-        <template>
+        <template v-if="busy">
           <span>{{ $t('init.loading') }}</span>
         </template>
       </InfiniteScroll>
@@ -54,15 +62,16 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Notifications',
+  middleware: 'authentication',
   data () {
     return {
+      busy: false,
       componentKey: 0,
       enough: false,
       items: [],
       show: false
     }
   },
-  middleware: 'authenticated',
   async fetch () {
     await this.fetchNotifications()
     this.show = true
@@ -72,6 +81,9 @@ export default {
       currentUser: 'users/sessions/current',
       notifications: 'notifications/listSorted'
     })
+  },
+  mounted () {
+    this.getData()
   },
   methods: {
     ...mapActions({
@@ -92,15 +104,14 @@ export default {
       }
     },
     getData () {
+      this.busy = true
       const qty = this.items.length + 20 > this.notifications.length ? this.notifications.length - this.items.length : 20
       if (qty !== 20) {
         this.enough = true
       }
       this.items = this.items.concat(this.notifications.slice(this.items.length, this.items.length + qty))
+      this.busy = false
     }
-  },
-  mounted () {
-    this.getData()
   }
 }
 </script>

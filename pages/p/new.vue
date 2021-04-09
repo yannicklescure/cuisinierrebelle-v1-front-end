@@ -57,7 +57,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'PageNew',
-  middleware: ['authenticated', 'admin'],
+  middleware: ['authentication', 'admin'],
   data () {
     return {
       componentKey: 0,

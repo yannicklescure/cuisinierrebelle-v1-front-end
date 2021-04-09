@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Admin',
-  middleware: ['authenticated', 'admin'],
+  middleware: ['authentication', 'admin'],
   computed: {
     ...mapGetters({
       currentUser: 'users/sessions/current'

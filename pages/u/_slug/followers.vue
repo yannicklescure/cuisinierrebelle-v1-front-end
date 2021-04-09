@@ -31,7 +31,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'UserFollowers',
-  middleware: 'authenticated',
+  middleware: 'authentication',
   data () {
     return {
       busy: false,

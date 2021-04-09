@@ -74,7 +74,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'RecipeEdit',
-  middleware: ['authenticated', 'authorization'],
+  middleware: ['authentication', 'authorization'],
   // props: ['item'],
   data () {
     return {

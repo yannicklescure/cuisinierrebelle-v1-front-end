@@ -12,7 +12,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Bookmarks',
-  middleware: 'authenticated',
+  middleware: 'authentication',
   // nuxtI18n: {
   //   paths: {
   //     fr: '/favoris', // -> accessible at /favoris

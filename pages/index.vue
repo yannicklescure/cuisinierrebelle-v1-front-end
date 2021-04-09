@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-if="$fetchState.error">
+    <p v-if="$fetchState.pending">
+      <span>{{ $t('init.loading') }}</span>
+    </p>
+    <div v-else-if="$fetchState.error">
       <NotFound />
     </div>
     <div v-else>
@@ -20,13 +23,8 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
-  data () {
-    return {
-      show: false
-    }
-  },
   async fetch () {
-    const refresh = this.timestamp != null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
+    const refresh = this.timestamp !== null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
     if (refresh) {
       await this.getStoreData()
     }
@@ -37,9 +35,6 @@ export default {
       recipes: 'recipes/listSorted',
       timestamp: 'timestamp'
     })
-  },
-  mounted () {
-    this.show = true
   },
   methods: {
     ...mapActions({

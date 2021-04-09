@@ -1,13 +1,21 @@
 <template>
   <div>
-    <nuxt keep-alive />
-    <SocialHead
-      :title="socialMetaData.title"
-      :description="socialMetaData.description"
-      :image="socialMetaData.image"
-    />
-    <UsersBanner :user="user" />
-    <Cards v-if="recipes.length > 0" :recipes="userRecipes" />
+    <p v-if="$fetchState.pending">
+      <span>{{ $t('init.loading') }}</span>
+    </p>
+    <div v-else-if="$fetchState.error">
+      <NotFound />
+    </div>
+    <div v-else>
+      <nuxt keep-alive />
+      <SocialHead
+        :title="socialMetaData.title"
+        :description="socialMetaData.description"
+        :image="socialMetaData.image"
+      />
+      <UsersBanner :user="user" />
+      <Cards v-if="recipes.length > 0" :recipes="userRecipes" />
+    </div>
   </div>
 </template>
 
@@ -21,10 +29,7 @@ export default {
   // },
   async fetch () {
     await this.getUser(this.$route.params.slug)
-    let refresh = true
-    if (this.timestamp != null) {
-      refresh = new Date().getTime() - this.timestamp > 60 * 1000 * 3
-    }
+    const refresh = this.timestamp !== null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
     if (refresh) {
       await this.getStoreData()
     }

@@ -77,7 +77,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Pages',
-  middleware: ['authenticated', 'admin'],
+  middleware: ['authentication', 'admin'],
   data () {
     return {
       componentKey: 0,

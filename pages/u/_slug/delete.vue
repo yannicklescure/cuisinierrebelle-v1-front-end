@@ -45,7 +45,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'UserDelete',
-  middleware: ['authenticated', 'authorization'],
+  middleware: ['authentication', 'authorization'],
   data () {
     return {
       componentKey: 0,

@@ -18,10 +18,9 @@
 
     <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
 
-    <Comments
-      :item="item"
-      @refresh="$fetch"
-    />
+    <client-only>
+      <Comments :item="item" @refresh="$fetch" />
+    </client-only>
   </div>
 </template>
 
@@ -49,10 +48,7 @@ export default {
     // TO DO
     // check if recipe exists in store or fetch
     await this.getRecipe(this.$route.params.slug)
-    let refresh = true
-    if (this.timestamp !== null) {
-      refresh = new Date().getTime() - this.timestamp > 60 * 1000 * 3
-    }
+    const refresh = this.timestamp !== null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
     if (refresh) {
       await this.getStoreData()
     }

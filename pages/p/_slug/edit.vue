@@ -57,7 +57,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'PageEdit',
-  middleware: ['authenticated', 'admin'],
+  middleware: ['authentication', 'admin'],
   // props: ['item'],
   data () {
     return {
