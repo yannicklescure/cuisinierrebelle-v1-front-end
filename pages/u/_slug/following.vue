@@ -16,7 +16,7 @@
             </tbody>
             <InfiniteScroll :enough="enough" @load-more="getData()">
               <template v-if="busy">
-                <span>{{ $t('init.loading') }}</span>
+                <Loading />
               </template>
             </InfiniteScroll>
           </table>

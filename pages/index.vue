@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p v-if="$fetchState.pending">
-      <span>{{ $t('init.loading') }}</span>
-    </p>
+    <div v-if="$fetchState.pending">
+      <Loading />
+    </div>
     <div v-else-if="$fetchState.error">
       <NotFound />
     </div>
