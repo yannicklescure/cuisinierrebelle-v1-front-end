@@ -187,7 +187,7 @@ export default {
         this.query = ''
       }
     },
-    async scroll2Top () {
+    scroll2Top () {
       if (this.$route.path === '/') {
         const scroll = () => {
           const scrollOptions = {
@@ -198,7 +198,7 @@ export default {
           window.scrollTo(scrollOptions)
         }
         if (window.scrollY > 0) {
-          await scroll()
+          scroll()
         }
       } else {
         this.$router.push({ path: '/' })
