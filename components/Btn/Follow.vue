@@ -39,7 +39,7 @@ export default {
   computed: {
     ...mapGetters({
       isAuthenticated: 'users/authentication/isAuthenticated',
-      currentUser: 'users/sessions/current'
+      currentUser: 'users/sessions/user'
     }),
     isFollowing () {
       return this.currentUser.following.data.filter(f => f.slug === this.item.slug).length > 0

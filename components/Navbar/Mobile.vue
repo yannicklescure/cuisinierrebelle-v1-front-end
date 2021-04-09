@@ -144,7 +144,7 @@ export default {
   computed: {
     ...mapGetters({
       authorization: 'users/sessions/authorization',
-      currentUser: 'users/sessions/current',
+      currentUser: 'users/sessions/user',
       isAuthenticated: 'users/authentication/isAuthenticated',
       notifications: 'notifications/listSorted'
     }),

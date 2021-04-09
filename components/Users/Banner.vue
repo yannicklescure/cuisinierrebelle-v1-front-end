@@ -75,7 +75,7 @@ export default {
   computed: {
     ...mapGetters({
       getUserRecipes: 'recipes/user',
-      currentUser: 'users/sessions/current'
+      currentUser: 'users/sessions/user'
     }),
     countFollowers () {
       return this.user.followers.data.length

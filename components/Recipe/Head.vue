@@ -76,7 +76,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/current'
+      currentUser: 'users/sessions/user'
     }),
     isRecipeOwner () {
       return this.item.user.id === this.currentUser.id

@@ -34,7 +34,7 @@ export default {
   middleware: ['authentication', 'authorization'],
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/current'
+      currentUser: 'users/sessions/user'
     })
   }
 }

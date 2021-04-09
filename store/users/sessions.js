@@ -208,7 +208,7 @@ export const getters = {
       .sort((a, b) => (new Date(a.created_at).getTime() > new Date(b.created_at).getTime()) ? 1 : -1).reverse()
       .map(bookmark => rootGetters['recipes/listSorted'].filter(item => item.recipe.id === bookmark.recipe_id)[0])
   },
-  current (state, getters, rootState, rootGetters) {
+  user (state, getters, rootState, rootGetters) {
     return state.user
   },
   authorization (state, getters, rootState, rootGetters) {

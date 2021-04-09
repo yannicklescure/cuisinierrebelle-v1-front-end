@@ -92,7 +92,7 @@ export default {
   computed: {
     ...mapGetters({
       pages: 'pages/all',
-      currentUser: 'users/sessions/current'
+      currentUser: 'users/sessions/user'
     })
   },
   methods: {

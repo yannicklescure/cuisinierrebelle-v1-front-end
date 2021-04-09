@@ -18,11 +18,19 @@
 
 export default {
   name: 'CardBody',
-  props: ['item', 'dimension'],
+  props: {
+    item: {
+      type: Object,
+      default: null
+    },
+    dimension: {
+      type: Object,
+      default: null
+    }
+  },
   mounted () {
-    this.$nextTick(() => {
-      this.$refs.lazyImage.src = this.$refs.lazyImage.dataset.src
-    })
+    this.$refs.lazyImage.src = this.$refs.lazyImage.dataset.src
+    // this.$nextTick(() => {})
   }
 }
 </script>

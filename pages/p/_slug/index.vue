@@ -45,7 +45,7 @@ export default {
   computed: {
     ...mapGetters({
       page: 'pages/filter',
-      currentUser: 'users/sessions/current'
+      currentUser: 'users/sessions/user'
     })
   },
   methods: {

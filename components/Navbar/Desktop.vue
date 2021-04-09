@@ -9,7 +9,7 @@
         class="navbar-brand d-flex align-items-center text-body mouse-pointer"
         @click="scroll2Top"
       >
-        <img :src="'https://media.cuisinierrebelle.com/brand-icon.jpg'" width="32" height="32" class="mr-1">
+        <img src="~/assets/img/favicon-32x32.png" width="32" height="32" class="mr-1">
         <span>{{ $t('navbar.brand') }}</span>
       </div>
     </div>
@@ -145,7 +145,7 @@ export default {
   computed: {
     ...mapGetters({
       bookmarks: 'users/sessions/bookmarks',
-      currentUser: 'users/sessions/current',
+      currentUser: 'users/sessions/user',
       isAuthenticated: 'users/authentication/isAuthenticated',
       notifications: 'notifications/listSorted'
     }),

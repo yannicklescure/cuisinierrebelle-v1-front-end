@@ -2,9 +2,9 @@
   <div>
     <div class="custom-control custom-switch">
       <input
+        id="Notifications"
         type="checkbox"
         class="custom-control-input"
-        id="Notifications"
         :checked="checked"
         @click="toggle"
       >
@@ -18,14 +18,9 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'UserNotifications',
-  data () {
-    return {
-      // notifications: false,
-    }
-  },
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/current',
+      currentUser: 'users/sessions/user'
     }),
     checked () {
       return this.currentUser.notification
@@ -37,13 +32,9 @@ export default {
         id: this.currentUser.id,
         notification: !this.checked
       }
-      console.log(payload)
       this.$store
         .dispatch('users/sessions/notifications', payload)
     }
-  },
-  // mounted () {
-  //   // this.notifications = this.checked
-  // }
+  }
 }
 </script>

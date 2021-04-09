@@ -32,11 +32,14 @@ export default {
   computed: {
     ...mapGetters({
       isAuthenticated: 'users/authentication/isAuthenticated',
-      currentUser: 'users/sessions/current'
+      currentUser: 'users/sessions/user'
     }),
     bookmark () {
       return this.bookmarked ? 'bookmark' : 'bookmark_border'
     }
+  },
+  beforeMount () {
+    this.isBookmarked()
   },
   methods: {
     isBookmarked () {
@@ -49,22 +52,17 @@ export default {
     },
     bookmarkIt () {
       if (!this.bookmarked) {
-        console.log('bookmark')
         this.bookmarks += 1
         this.bookmarked = true
         this.$store
           .dispatch('recipes/bookmark', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id, created_at: new Date().getTime() })
           // .then(() => this.$emit('bookmarked', true))
       } else {
-        console.log('unbookmark')
         this.bookmarks -= 1
         this.bookmarked = false
         this.$store.dispatch('recipes/unbookmark', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id })
       }
     }
-  },
-  beforeMount () {
-    this.isBookmarked()
   }
 }
 </script>

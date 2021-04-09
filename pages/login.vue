@@ -219,24 +219,24 @@ export default {
       if (checkForm) {
         this.disabled = true
         this.posting = true
-        // const payload = {
-        //   email: this.login.email,
-        //   password: this.login.password
-        // }
-        const response = await this.$store.dispatch('users/sessions/logIn', this.login)
-        if (response.email === this.login.email) {
-          // await this.dispatch('users/sessions/user', null)
-          this.fetchNotifications()
-          const firstName = capitalize(response.first_name)
-          this.$toast.success(this.$t('login.welcome', { firstName }), {
-            position: 'bottom-center',
-            duration: 3000
-          })
-          this.login.email = null
-          this.login.password = null
-          this.$router.push({ path: '/' })
-        } else {
-          this.disabled = false
+        try {
+          const response = await this.$store.dispatch('users/sessions/logIn', this.login)
+          if (response.email === this.login.email) {
+            // await this.dispatch('users/sessions/user', null)
+            this.fetchNotifications()
+            const firstName = capitalize(response.first_name)
+            this.$toast.success(this.$t('login.welcome', { firstName }), {
+              position: 'bottom-center',
+              duration: 3000
+            })
+            this.login.email = null
+            this.login.password = null
+            this.$router.push({ path: '/' })
+          } else {
+            this.disabled = false
+          }
+        } catch (e) {
+          this.errors.push(e.response.data.message)
         }
       } else {
         this.$toast.error(this.errors[0], {

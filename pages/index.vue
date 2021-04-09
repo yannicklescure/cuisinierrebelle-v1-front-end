@@ -13,7 +13,8 @@
         :image="'https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg'"
       />
       <Banner v-if="!isAuthenticated" />
-      <Cards v-if="recipes.length > 0" :recipes="recipes" />
+      <Cards v-if="show" :recipes="recipes" />
+      <Loading v-else />
     </div>
   </div>
 </template>
@@ -32,14 +33,21 @@ export default {
   computed: {
     ...mapGetters({
       isAuthenticated: 'users/authentication/isAuthenticated',
+      currentUser: 'users/sessions/user',
       recipes: 'recipes/listSorted',
       timestamp: 'timestamp'
-    })
+    }),
+    show () {
+      if (this.isAuthenticated) {
+        return this.currentUser.likes && this.recipes.length > 0
+      } else {
+        return this.recipes.length > 0
+      }
+    }
   },
   methods: {
     ...mapActions({
-      getStoreData: 'getStoreData',
-      fetchNotifications: 'notifications/list'
+      getStoreData: 'getStoreData'
     })
   }
 }

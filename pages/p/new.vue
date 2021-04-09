@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/current'
+      currentUser: 'users/sessions/user'
     })
   },
   methods: {

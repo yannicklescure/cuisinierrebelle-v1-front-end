@@ -39,7 +39,7 @@ export default {
       recipes: 'recipes/list',
       getUserRecipes: 'recipes/user',
       usersFilter: 'users/filter',
-      users: 'users/list',
+      // users: 'users/list',
       timestamp: 'timestamp'
     }),
     user () {

@@ -20,7 +20,7 @@ export default {
   middleware: ['authentication', 'admin'],
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/current'
+      currentUser: 'users/sessions/user'
     }),
     title () {
       let str = ''
