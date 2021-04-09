@@ -8,9 +8,9 @@
     </div>
     <div v-else>
       <SocialHead
-        :title="'Recettes Sociales !'"
-        :description="'Partagez vos recettes dès maintenant en toute simplicité'"
-        :image="'https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg'"
+        :title="socialMetaData.title"
+        :description="socialMetaData.description"
+        :image="socialMetaData.image"
       />
       <Banner v-if="!isAuthenticated" />
       <Cards v-if="show" :recipes="recipes" />
@@ -37,6 +37,13 @@ export default {
       recipes: 'recipes/listSorted',
       timestamp: 'timestamp'
     }),
+    socialMetaData () {
+      return {
+        title: 'Recettes Sociales !',
+        description: 'Partagez vos recettes dès maintenant en toute simplicité',
+        image: 'https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg'
+      }
+    },
     show () {
       if (this.isAuthenticated) {
         return this.currentUser.likes && this.recipes.length > 0

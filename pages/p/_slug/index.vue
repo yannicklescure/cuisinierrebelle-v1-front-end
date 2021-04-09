@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <div v-if="$fetchState.error">
+    <div v-if="$fetchState.pending">
+      <Loading />
+    </div>
+    <div v-else-if="$fetchState.error">
       <NotFound />
     </div>
     <div
@@ -9,9 +12,9 @@
       class="container"
     >
       <SocialHead
-        :title="item.title"
-        :description="'Partagez vos recettes dès maintenant en toute simplicité'"
-        :image="'https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg'"
+        :title="socialMetaData.title"
+        :description="socialMetaData.description"
+        :image="socialMetaData.image"
       />
       <div v-if="!$device.isMobile && currentUser.admin" class="d-flex justify-content-center align-items-center my-3">
         <NuxtLink :to="`/p/${ $route.params.slug }/edit`" class="text-body text-capitalize text-decoration-none">
@@ -34,7 +37,8 @@ export default {
     return {
       componentKey: 0,
       item: {
-        content: ''
+        content: '',
+        title: ''
       }
     }
   },
@@ -46,7 +50,14 @@ export default {
     ...mapGetters({
       page: 'pages/filter',
       currentUser: 'users/sessions/user'
-    })
+    }),
+    socialMetaData () {
+      return {
+        title: this.item.title,
+        description: 'Partagez vos recettes dès maintenant en toute simplicité',
+        image: 'https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg'
+      }
+    }
   },
   methods: {
     ...mapActions({

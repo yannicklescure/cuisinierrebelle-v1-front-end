@@ -3,8 +3,8 @@
     <div class="d-flex flex-column justify-content-between align-items-between">
       <NavbarMobile v-if="$device.isMobile" />
       <NavbarDesktop v-else />
-      <Nuxt />
-      <LazyFooter />
+      <Nuxt keep-alive />
+      <Footer />
     </div>
   </div>
 </template>

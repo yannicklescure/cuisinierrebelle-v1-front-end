@@ -42,19 +42,19 @@ export default {
       // users: 'users/list',
       timestamp: 'timestamp'
     }),
-    user () {
-      return this.usersFilter(this.$route.params.slug)
-      // return this.item.data
-    },
-    userRecipes () {
-      return this.getUserRecipes(this.$route.params.slug)
-    },
     socialMetaData () {
       return {
         title: this.user.name,
         description: 'Partagez vos recettes dès maintenant en toute simplicité',
         image: this.user.image.openGraph.url
       }
+    },
+    user () {
+      return this.usersFilter(this.$route.params.slug)
+      // return this.item.data
+    },
+    userRecipes () {
+      return this.getUserRecipes(this.$route.params.slug)
     }
   },
   methods: {
