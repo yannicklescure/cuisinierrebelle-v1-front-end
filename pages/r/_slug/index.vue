@@ -7,12 +7,10 @@
     />
     <client-only>
       <div v-if="$device.isMobile">
-        <RecipeMobileHead :item="item" />
-        <RecipeMobileBody :item="item" :dimension="dimension" />
+        <RecipeMobile :item="item" :dimension="dimension" />
       </div>
       <div v-else>
-        <RecipeDesktopHead :item="item" />
-        <RecipeDesktopBody :item="item" :dimension="dimension" />
+        <RecipeDesktop :item="item" :dimension="dimension" />
       </div>
 
       <LazyYoutube :item="item" />

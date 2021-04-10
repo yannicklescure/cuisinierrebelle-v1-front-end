@@ -29,17 +29,23 @@
         </div>
       </div>
     </div>
-    <div v-if="$device.isDesktop && isRecipeOwner" class="d-print-none">
-      <NuxtLink :to="`/r/${item.recipe.slug}/edit`" class="text-body text-capitalize text-decoration-none">
-        {{ $t('recipe.edit') }}
-      </NuxtLink>
+    <div class="mt-2">
+      <img
+        ref="lazyImage"
+        class="recipe-image"
+        :data-src="item.recipe.photo.full.url"
+        :width="dimension.width"
+        :height="dimension.height"
+        :style="`object-fit: cover;border-radius: 4px`"
+        :alt="item.recipe.slug"
+      >
     </div>
-    <div v-if="$device.isMobile" class="d-flex order-0 align-items-start justify-content-between my-3 mb-md-0 d-print-none">
+    <div class="d-flex order-0 align-items-start justify-content-between my-2 mb-md-0 d-print-none">
       <div class="d-flex order-0 align-items-start">
         <BtnVisit :item="item" />
         <BtnComment :item="item" />
         <BtnShare :item="item" />
-        <div v-if="$device.isMobile && isRecipeOwner" class="d-print-none ml-3">
+        <div v-if="isRecipeOwner" class="d-print-none ml-3">
           <NuxtLink :to="`/r/${item.recipe.slug}/edit`" class="text-body text-capitalize text-decoration-none">
             <i :class="['material-icons', 'md-32']">edit</i>
           </NuxtLink>
@@ -48,16 +54,6 @@
       <div class="d-flex order-1 align-items-end">
         <BtnLike :item="item" />
         <BtnBookmark :item="item" />
-      </div>
-    </div>
-    <div v-else class="d-flex order-0 justify-content-between d-print-none">
-      <div class="d-flex align-items-center justify-content-end order-1 w-100">
-        <div class="d-flex order-1 align-items-center">
-          <BtnVisit :item="item" />
-          <BtnPrint :item="item" />
-          <BtnLike :item="item" />
-          <BtnBookmark :item="item" />
-        </div>
       </div>
     </div>
   </div>
@@ -72,6 +68,10 @@ export default {
     item: {
       type: Object,
       default: null
+    },
+    dimension: {
+      type: Object,
+      default: null
     }
   },
   computed: {
@@ -81,6 +81,9 @@ export default {
     isRecipeOwner () {
       return this.item.user.id === this.currentUser.id
     }
+  },
+  mounted () {
+    this.$refs.lazyImage.src = this.$refs.lazyImage.dataset.src
   }
 }
 </script>
