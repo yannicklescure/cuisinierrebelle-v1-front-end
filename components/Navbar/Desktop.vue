@@ -1,6 +1,5 @@
 <template>
   <div
-    :key="componentKey"
     ref="navbar"
     :class="['d-print-none navbar fixed-top d-flex px-3 py-2 justify-content-between align-items-center bg-white mb-3']"
   >
@@ -127,7 +126,6 @@ export default {
   name: 'NavbarLarge',
   data () {
     return {
-      componentKey: 0,
       loading: false,
       query: '',
       icons: {
@@ -160,10 +158,16 @@ export default {
       }
     }
   },
+  beforeMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
   mounted () {
     this.navbarHeight()
-    this.handleScroll()
-    window.addEventListener('scroll', this.handleScroll)
+    // this.handleScroll()
+    // window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
     ...mapActions({
@@ -206,14 +210,11 @@ export default {
     },
     handleScroll (event) {
       // Code to be executed when the window is scrolled
-      const position = window.scrollY > 0
-      // console.log(position)
-      if (position) {
+      if (window.scrollY > 0) {
         this.$refs.navbar.classList.add('border-bottom')
       } else {
         this.$refs.navbar.classList.remove('border-bottom')
       }
-      return position
     },
     logout () {
       const message = this.$t('navbar.are_you_sure')
