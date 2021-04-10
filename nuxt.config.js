@@ -238,8 +238,7 @@ export default {
     id: 'ca-pub-9223566768445571',
     analyticsDomainName: 'cuisinierrebelle.com',
     analyticsUacct: 'UA-155962082-1',
-    onPageLoad: true,
-    test: true
+    onPageLoad: true
   },
 
   i18n: {
