@@ -12,9 +12,11 @@
         :description="socialMetaData.description"
         :image="socialMetaData.image"
       />
-      <Banner v-if="!isAuthenticated" />
-      <Cards v-if="show" :recipes="recipes" />
-      <Loading v-else />
+      <client-only>
+        <Banner v-if="!isAuthenticated" />
+        <Cards v-if="show" :recipes="recipes" />
+        <Loading v-else />
+      </client-only>
     </div>
   </div>
 </template>

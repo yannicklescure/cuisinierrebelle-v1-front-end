@@ -1,8 +1,10 @@
 <template>
   <div id="default" ref="default">
     <div class="d-flex flex-column justify-content-between align-items-between">
-      <NavbarMobile v-if="$device.isMobile" />
-      <NavbarDesktop v-else />
+      <client-only>
+        <NavbarMobile v-if="$device.isMobile" />
+        <NavbarDesktop v-else />
+      </client-only>
       <Nuxt keep-alive />
       <Footer />
     </div>
