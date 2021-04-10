@@ -235,7 +235,8 @@ export default {
             })
             this.login.email = null
             this.login.password = null
-            this.$router.push({ path: '/' })
+            // this.$router.push({ path: '/' })
+            this.$router.back()
           } else {
             this.disabled = false
             this.posting = false

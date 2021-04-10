@@ -239,6 +239,7 @@ export default {
     analyticsDomainName: 'cuisinierrebelle.com',
     analyticsUacct: 'UA-155962082-1',
     onPageLoad: true,
+    test: true
   },
 
   i18n: {

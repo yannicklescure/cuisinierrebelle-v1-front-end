@@ -5,20 +5,20 @@
       :description="socialMetaData.description"
       :image="socialMetaData.image"
     />
-    <RecipeHead :item="item" />
-    <RecipeBody :item="item" :dimension="dimension" />
-
-    <LazyYoutube :item="item" />
-
-    <LazyBtnSocialSharing v-if="$device.isMobile == false" :item="item" />
-
-    <div class="w-100 my-5">
-      <LazyRecipeAds />
-    </div>
-
-    <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
-
     <client-only>
+      <RecipeHead :item="item" />
+      <RecipeBody :item="item" :dimension="dimension" />
+
+      <LazyYoutube :item="item" />
+
+      <LazyBtnSocialSharing v-if="$device.isMobile == false" :item="item" />
+
+      <div class="w-100 my-5">
+        <LazyRecipeAds />
+      </div>
+
+      <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
+
       <Comments :item="item" @refresh="$fetch" />
     </client-only>
   </div>

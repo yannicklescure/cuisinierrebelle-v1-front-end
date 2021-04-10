@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     isLiked () {
-      if (this.isAuthenticated) {
+      if (this.currentUser.likes) {
         this.liked = this.currentUser.likes.findIndex(like => like.recipe_id === this.item.recipe.id) > -1
       } else {
         this.liked = false

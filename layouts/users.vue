@@ -5,8 +5,7 @@
         <NavbarMobile v-if="$device.isMobile" />
         <NavbarDesktop v-else />
       </client-only>
-      <Nuxt />
-      <Footer />
+      <Nuxt keep-alive />
     </div>
   </div>
 </template>
@@ -15,7 +14,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Default',
+  name: 'Users',
   computed: {
     ...mapGetters({
       navbarHeight: 'navbarHeight'

@@ -3,7 +3,8 @@
     <div v-if="user" class="d-flex justify-content-between p-2 p-md-3 bg-light rounded">
       <div class="mx-md-2 d-flex justify-content-start align-items-center">
         <img
-          :src="user.image.preview.url"
+          ref="lazyImage"
+          :data-src="user.image.preview.url"
           :alt="user.name"
           class="rounded"
           width="64"
@@ -83,6 +84,9 @@ export default {
     countUserRecipes () {
       return this.getUserRecipes(this.user.slug).length
     }
+  },
+  mounted () {
+    this.$refs.lazyImage.src = this.$refs.lazyImage.dataset.src
   },
   methods: {
     userCreatedAt: (timestamp) => {

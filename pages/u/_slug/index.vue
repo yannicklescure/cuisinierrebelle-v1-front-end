@@ -24,6 +24,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'User',
+  layout: 'users',
   // async asyncData ({ $axios, params }) {
   //   return { item: await $axios.$get(`/v1/users/${params.slug}`) }
   // },

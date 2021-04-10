@@ -48,9 +48,8 @@ export default {
     })
   },
   mounted () {
-    this.$nextTick(() => {
-      this.$refs.lazyImage.src = this.$refs.lazyImage.dataset.src
-    })
+    this.$refs.lazyImage.src = this.$refs.lazyImage.dataset.src
+    // this.$nextTick(() => {})
   }
 }
 </script>

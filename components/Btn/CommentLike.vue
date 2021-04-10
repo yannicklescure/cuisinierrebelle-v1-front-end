@@ -43,8 +43,8 @@ export default {
   },
   methods: {
     isUserLiked () {
-      if (this.isAuthenticated) {
-        this.liked = this.currentUser[`${this.type}Likes`].findIndex(item => item === this.item.id) > -1
+      if (this.currentUser[`${this.type}Likes`]) {
+        this.liked = this.currentUser[`${this.type}Likes`].findIndex(item => item === parseInt(this.item.id)) > -1
       } else {
         this.liked = false
       }

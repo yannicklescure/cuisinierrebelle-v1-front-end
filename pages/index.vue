@@ -26,6 +26,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
+  layout: 'recipes',
   async fetch () {
     const refresh = this.timestamp !== null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
     if (refresh) {
