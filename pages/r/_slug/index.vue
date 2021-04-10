@@ -6,15 +6,24 @@
       :image="socialMetaData.image"
     />
     <client-only>
-      <RecipeHead :item="item" />
-      <RecipeBody :item="item" :dimension="dimension" />
+      <div v-if="$device.isMobile">
+        <RecipeMobileHead :item="item" />
+        <RecipeMobileBody :item="item" :dimension="dimension" />
+      </div>
+      <div v-else>
+        <RecipeDesktopHead :item="item" />
+        <RecipeDesktopBody :item="item" :dimension="dimension" />
+      </div>
 
       <LazyYoutube :item="item" />
 
-      <LazyBtnSocialSharing v-if="$device.isMobile == false" :item="item" />
+      <LazyBtnSocialSharing v-if="$device.isDesktop" :item="item" />
 
       <div class="w-100 my-5">
-        <LazyRecipeAds />
+        <adsbygoogle
+          :ad-style="{ display: 'block' }"
+          ad-slot="7782275531"
+        />
       </div>
 
       <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
