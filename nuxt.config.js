@@ -162,6 +162,14 @@ export default {
     '@nuxtjs/sitemap'
   ],
 
+  bootstrapVue: {
+    icons: false,
+    // componentPlugins: [],
+    // directivePlugins: [],
+    // components: [],
+    // directives: [],
+  },
+
   publicRuntimeConfig: {
     axios: {
       baseURL: 'https://api.cuisinierrebelle.com'
@@ -268,6 +276,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    babel: {
+      compact: true
+    },
     extractCSS: true,
     terser: {
       // https://github.com/terser/terser#compress-options
