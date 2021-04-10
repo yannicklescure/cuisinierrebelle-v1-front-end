@@ -2,9 +2,9 @@ import getRoutes from "./utils/getRoutes";
 
 export default {
 
-  router: {
-    trailingSlash: false
-  },
+  // router: {
+  //   trailingSlash: false
+  // },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -280,14 +280,15 @@ export default {
       compact: true
     },
     extractCSS: true,
-    terser: {
-      // https://github.com/terser/terser#compress-options
-      terserOptions: {
-        compress: {
-          drop_console: true
-        },
-      },
-    },
+    optimizeCSS: true,
+    // terser: {
+    //   // https://github.com/terser/terser#compress-options
+    //   terserOptions: {
+    //     compress: {
+    //       drop_console: true
+    //     },
+    //   },
+    // },
   },
 
   env: {
