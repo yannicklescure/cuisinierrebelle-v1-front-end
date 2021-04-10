@@ -8,15 +8,15 @@
     <RecipeHead :item="item" />
     <RecipeBody :item="item" :dimension="dimension" />
 
-    <LazyYoutube v-if="show" :item="item" />
+    <LazyYoutube :item="item" />
 
-    <LazyBtnSocialSharing v-if="show && $device.isMobile == false" :item="item" />
+    <LazyBtnSocialSharing v-if="$device.isMobile == false" :item="item" />
 
-    <div v-if="show" class="w-100 my-5">
+    <div class="w-100 my-5">
       <LazyRecipeAds />
     </div>
 
-    <LazyOtherRecipes v-if="show && recipes.length > 2" :recipes="recipes" />
+    <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
 
     <client-only>
       <Comments :item="item" @refresh="$fetch" />
@@ -41,8 +41,7 @@ export default {
       dimension: {
         width: 0,
         height: 0
-      },
-      show: false
+      }
     }
   },
   async fetch () {
@@ -77,7 +76,6 @@ export default {
     this.$nextTick(async () => {
       await this.matchInfoBox()
       window.addEventListener('resize', this.matchInfoBox)
-      this.show = true
     })
   },
   methods: {
