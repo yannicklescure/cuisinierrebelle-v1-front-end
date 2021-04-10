@@ -25,6 +25,7 @@ export default {
   },
   data () {
     return {
+      clickable: true,
       likes: this.item.recipe.likes,
       liked: false
     }
@@ -50,14 +51,18 @@ export default {
       }
     },
     async likeIt () {
-      if (this.liked) {
-        this.likes -= 1
-        this.liked = false
-        await this.$store.dispatch('recipes/unlike', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id })
-      } else {
-        this.likes += 1
-        this.liked = true
-        await this.$store.dispatch('recipes/like', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id })
+      if (this.clickable) {
+        this.clickable = false
+        if (this.liked) {
+          this.likes -= 1
+          this.liked = false
+          await this.$store.dispatch('recipes/unlike', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id })
+        } else {
+          this.likes += 1
+          this.liked = true
+          await this.$store.dispatch('recipes/like', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id })
+        }
+        this.clickable = true
       }
     }
   }

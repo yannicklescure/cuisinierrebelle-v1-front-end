@@ -25,6 +25,7 @@ export default {
   },
   data () {
     return {
+      clickable: true,
       bookmarks: this.item.recipe.bookmarks,
       bookmarked: false
     }
@@ -51,16 +52,20 @@ export default {
       }
     },
     bookmarkIt () {
-      if (!this.bookmarked) {
-        this.bookmarks += 1
-        this.bookmarked = true
-        this.$store
-          .dispatch('recipes/bookmark', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id, created_at: new Date().getTime() })
-          // .then(() => this.$emit('bookmarked', true))
-      } else {
-        this.bookmarks -= 1
-        this.bookmarked = false
-        this.$store.dispatch('recipes/unbookmark', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id })
+      if (this.clickable) {
+        this.clickable = false
+        if (!this.bookmarked) {
+          this.bookmarks += 1
+          this.bookmarked = true
+          this.$store
+            .dispatch('recipes/bookmark', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id, created_at: new Date().getTime() })
+            // .then(() => this.$emit('bookmarked', true))
+        } else {
+          this.bookmarks -= 1
+          this.bookmarked = false
+          this.$store.dispatch('recipes/unbookmark', { user_id: this.currentUser.id, recipe_id: this.item.recipe.id })
+        }
+        this.clickable = true
       }
     }
   }
