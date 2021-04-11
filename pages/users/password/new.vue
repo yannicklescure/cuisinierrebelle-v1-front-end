@@ -89,8 +89,8 @@ export default {
           }
         }
         const response = await this.$store.dispatch('users/authentication/requestPasswordReset', payload)
-        if (response.data.token !== null) {
-          this.$toast.info(this.$t('login.password.email', { email: response.data.user.email }), {
+        if (response.user.token !== null) {
+          this.$toast.info(this.$t('login.password.email', { email: response.user.email }), {
             position: 'bottom-center',
             duration: 3000
           })

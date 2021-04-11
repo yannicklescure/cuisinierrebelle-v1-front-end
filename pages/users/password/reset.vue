@@ -161,7 +161,7 @@ export default {
       }
       return true
     },
-    requestReset () {
+    async requestReset () {
       const checkForm = this.checkForm()
       if (checkForm) {
         const payload = {
@@ -172,75 +172,46 @@ export default {
             token: this.token
           }
         }
-        this.$store.dispatch('users/authentication/passwordReset', payload)
-          .then((response) => {
-            if (response.status === 200) {
-              if (response.data.success) {
-                this.$toast.success(this.$t('login.password.reset.success', { email: this.email }), {
-                  position: 'bottom-center',
-                  duration: 3000
-                })
-                this.password = null
-                this.confirmation = null
-                this.$router.push({ path: '/login' })
-              }
-            } else if (response.response) {
-              // client received an error response (5xx, 4xx)
-              this.errors.push(response.status)
-            } else if (response.request) {
-              // client never received a response, or request never left
-              this.errors.push(response.status)
-            } else {
-              // anything else
-              this.errors.push(response)
-            }
+        try {
+          await this.$store.dispatch('users/authentication/passwordReset', payload)
+          this.$toast.success(this.$t('login.password.reset.success', { email: this.email }), {
+            position: 'bottom-center',
+            duration: 3000
           })
-          .then(() => {
-            if (this.errors.length > 0) {
-              this.$toast.error(this.errors[0], {
-                position: 'bottom-center',
-                duration: 3000
-              })
-            }
-          })
-      } else {
+          this.password = null
+          this.confirmation = null
+          this.$router.push({ path: '/login' })
+        } catch (e) {
+          this.errors.push(e)
+        }
+      }
+      if (this.errors.length > 0) {
         this.$toast.error(this.errors[0], {
           position: 'bottom-center',
           duration: 3000
         })
       }
     },
-    requestResetVerification () {
+    async requestResetVerification () {
       const payload = {
         user: {
           token: this.token
         }
       }
-      this.$store.dispatch('users/authentication/passwordResetVerification', payload)
-        .then((response) => {
-          if (response.status === 200) {
-            this.email = response.data.user.email
-            this.firstName = capitalize(response.data.user.firstName)
-            this.token = response.data.user.token
-          } else if (response.response) {
-            // client received an error response (5xx, 4xx)
-            this.errors.push(response.status)
-          } else if (response.request) {
-            // client never received a response, or request never left
-            this.errors.push(response.status)
-          } else {
-            // anything else
-            this.errors.push(response)
-          }
-        })
-        .then(() => {
-          if (this.errors.length > 0) {
-            this.$toast.error(this.errors[0], {
-              position: 'bottom-center',
-              duration: 3000
-            })
-          }
-        })
+      try {
+        const response = await this.$store.dispatch('users/authentication/passwordResetVerification', payload)
+        this.email = response.user.email
+        this.firstName = capitalize(response.user.firstName)
+        this.token = response.user.token
+      } catch (e) {
+        this.errors.push(e)
+        if (this.errors.length > 0) {
+          this.$toast.error(this.errors[0], {
+            position: 'bottom-center',
+            duration: 3000
+          })
+        }
+      }
     }
   }
 }

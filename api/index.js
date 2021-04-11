@@ -368,39 +368,6 @@ export const facebookLogin = async (context, payload) => {
   })
 }
 
-export const passwordResetVerification = async (context, payload) => {
-  return await axios({
-    validateStatus: (status) => {
-      return status < 500 // Resolve only if the status code is less than 500
-    },
-    method: 'post',
-    url: `${process.env.apiUrl}/v1/users/password/reset_verification`,
-    data: payload
-  })
-}
-
-export const passwordReset = async (context, payload) => {
-  return await axios({
-    validateStatus: (status) => {
-      return status < 500 // Resolve only if the status code is less than 500
-    },
-    method: 'post',
-    url: `${process.env.apiUrl}/v1/users/password/reset`,
-    data: payload
-  })
-}
-
-export const requestPasswordReset = async (context, payload) => {
-  return await axios({
-    validateStatus: (status) => {
-      return status < 500 // Resolve only if the status code is less than 500
-    },
-    method: 'post',
-    url: `${process.env.apiUrl}/v1/users/password/request`,
-    data: payload
-  })
-}
-
 export const resendConfirmationInstructions = async (context, payload) => {
   return await axios({
     validateStatus: (status) => {

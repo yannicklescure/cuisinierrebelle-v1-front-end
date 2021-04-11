@@ -23,15 +23,15 @@ export const actions = {
     return response
   },
   async requestPasswordReset (context, payload) {
-    const response = await api.requestPasswordReset(context, payload)
+    const response = await this.$axios.$post('/v1/users/password/request', payload, {})
     return response
   },
   async passwordReset (context, payload) {
-    const response = await api.passwordReset(context, payload)
+    const response = await this.$axios.$post('/v1/users/password/reset', payload, {})
     return response
   },
   async passwordResetVerification (context, payload) {
-    const response = await api.passwordResetVerification(context, payload)
+    const response = await this.$axios.$post('/v1/users/password/reset_verification', payload, {})
     return response
   },
   async signUp (context, payload) {
