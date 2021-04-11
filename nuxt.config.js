@@ -172,8 +172,8 @@ export default {
 
   publicRuntimeConfig: {
     axios: {
-      // baseURL: 'https://api.cuisinierrebelle.com'
-      baseURL: 'http://localhost:3000'
+      baseURL: 'https://api.cuisinierrebelle.com'
+      // baseURL: 'http://localhost:3000'
     }
   },
 
@@ -293,7 +293,7 @@ export default {
 
   env: {
     baseUrl: process.env.BASE_URL || 'https://www.cuisinierrebelle.com',
-    // apiUrl: 'https://api.cuisinierrebelle.com'
-    apiUrl: 'http://localhost:3000'
+    apiUrl: 'https://api.cuisinierrebelle.com'
+    // apiUrl: 'http://localhost:3000'
   }
 }
