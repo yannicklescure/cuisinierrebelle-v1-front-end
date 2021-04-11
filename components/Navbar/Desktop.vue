@@ -50,34 +50,30 @@
           <template #button-content>
             <i class="material-icons md-18 d-flex">more_vert</i>
           </template>
-          <NuxtLink
-            :to="`/u/${ currentUser.slug }`"
-            class="dropdown-item"
-            @click.native="dropdownClick"
+          <div
+            class="dropdown-item mouse-pointer"
+            @click="onClick(`/u/${ currentUser.slug }`)"
           >
             {{ $t('navbar.recipes') }}
-          </NuxtLink>
-          <NuxtLink
-            :to="`/u/${ currentUser.slug }/following`"
-            class="dropdown-item"
-            @click.native="getUsers"
+          </div>
+          <div
+            class="dropdown-item mouse-pointer"
+            @click="onClick(`/u/${ currentUser.slug }/following`)"
           >
             {{ $t('navbar.following') }}
-          </NuxtLink>
-          <NuxtLink
-            to="/r/new"
-            class="dropdown-item"
-            @click.native="dropdownClick"
+          </div>
+          <div
+            class="dropdown-item mouse-pointer"
+            @click="onClick('/r/new')"
           >
             {{ $t('navbar.new_recipe') }}
-          </NuxtLink>
-          <NuxtLink
-            :to="`/u/${ currentUser.slug }/settings`"
-            class="dropdown-item"
-            @click.native="dropdownClick"
+          </div>
+          <div
+            class="dropdown-item mouse-pointer"
+            @click="onClick(`/u/${ currentUser.slug }/settings`)"
           >
             {{ $t('navbar.settings') }}
-          </NuxtLink>
+          </div>
           <div
             class="dropdown-item mouse-pointer"
             @click="logout"
@@ -88,13 +84,12 @@
             v-if="currentUser.admin"
             class="border-top pt-2 mt-2"
           >
-            <NuxtLink
-              :to="'/admin'"
-              class="dropdown-item"
-              @click.native="dropdownClick"
+            <div
+              class="dropdown-item mouse-pointer"
+              @click="onClick('/admin')"
             >
               {{ $t('navbar.admin') }}
-            </NuxtLink>
+            </div>
           </div>
         </b-dropdown>
       </div>
@@ -158,11 +153,11 @@ export default {
       }
     }
   },
-  beforeMount() {
-    window.addEventListener("scroll", this.handleScroll);
+  beforeMount () {
+    window.addEventListener('scroll', this.handleScroll)
   },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.handleScroll)
   },
   mounted () {
     this.navbarHeight()
@@ -175,11 +170,9 @@ export default {
       fetchRecipes: 'recipes/list',
       refreshAccessToken: 'users/sessions/refreshAccessToken'
     }),
-    dropdownClick () {
+    onClick (path) {
       this.$refs.dropdown.hide(true)
-    },
-    getUsers () {
-      this.$refs.dropdown.hide(true)
+      this.$router.push({ path })
     },
     getNotifications () {
       this.icons.notifications = 'notifications_none'
