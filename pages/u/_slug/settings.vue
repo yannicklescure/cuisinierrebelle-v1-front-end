@@ -31,6 +31,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'UserSettings',
+  layout: 'users',
   middleware: ['authentication', 'authorization'],
   computed: {
     ...mapGetters({
