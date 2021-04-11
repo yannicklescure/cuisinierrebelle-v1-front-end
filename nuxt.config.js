@@ -2,9 +2,10 @@ import getRoutes from "./utils/getRoutes";
 
 export default {
 
-  // router: {
+  router: {
   //   trailingSlash: false
-  // },
+    middleware: 'switchman'
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
