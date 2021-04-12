@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div v-for="item in items" :key="item.timestamp" class="col-12 col-md-4 col-lg-3">
+      <div v-for="(item, index) in items" :key="item.timestamp + index" class="col-12 col-md-4 col-lg-3">
         <Card :item="item" />
       </div>
       <InfiniteScroll :enough="enough" @load-more="getData()">
