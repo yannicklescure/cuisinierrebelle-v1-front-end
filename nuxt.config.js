@@ -266,7 +266,7 @@ export default {
     },
     manifest: {
       name: 'Cuisinier Rebelle',
-      // short_name: 'CR',
+      short_name: 'C. Rebelle',
       lang: 'fr',
       useWebmanifestExtension: false
     }
