@@ -10,7 +10,8 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Cuisinier Rebelle, recettes sociales !',
-    titleTemplate: 'Cuisinier Rebelle | %s',
+    // titleTemplate: 'Cuisinier Rebelle | %s',
+    titleTemplate: '%s',
     meta: [
       { charset: 'utf-8' },
       {
@@ -59,7 +60,7 @@ export default {
         property: 'fb:app_id',
         content: '570259036897585'
       },
-      { hid: 'og:site_name', property: 'og:site_name', content: 'Cuisinier_Rebelle' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'Cuisinier Rebelle' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       {
         hid: 'og:url',
