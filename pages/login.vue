@@ -99,6 +99,7 @@ const capitalize = (s) => {
 
 export default {
   name: 'Login',
+  middleware: 'authentication',
   data () {
     return {
       connecting: false,

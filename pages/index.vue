@@ -42,8 +42,8 @@ export default {
     }),
     socialMetaData () {
       return {
-        title: 'Recettes Sociales !',
-        description: 'Partagez vos recettes dès maintenant en toute simplicité',
+        title: 'Cuisinier Rebelle, Recettes Sociales !',
+        description: 'Partagez dès maintenant vos recettes en toute simplicité',
         image: 'https://media.cuisinierrebelle.com/images/cr_icon_1200x1200.jpg'
       }
     },

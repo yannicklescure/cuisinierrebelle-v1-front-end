@@ -5,15 +5,15 @@ export default async (context, locale) => {
     },
     error: {
       failed: 'Nous sommes désolés, nous ne sommes pas en mesure de récupérer ces informations pour le moment, veuillez réessayer plus tard',
-      login: `L'adresse courriel ou le mot de passe est invalide.`
+      login: 'L\'adresse courriel ou le mot de passe est invalide.'
     },
     notFound: {
       title: 'Erreur HTTP 404',
-      text1: `En informatique, l’erreur 404 est un code du protocole de communication HTTP sur le réseau Internet pour signaler un incident. Ce code est renvoyé par un serveur HTTP pour indiquer qu'aucune ressource, généralement une page web, n'a été trouvée à l'adresse demandée. Le serveur d'hébergement de sites web génère généralement une page web « 404 Fichier introuvable » lorsqu'un utilisateur tente de suivre un lien rompu ou mort ; par conséquent, l'erreur 404 est l'une des erreurs les plus reconnaissables et des plus fréquentes rencontrées sur le World Wide Web.`,
-      text2: `Maintenant que vous savez, voici quelques liens pour vous aider:`,
-      home: `Page d'accueil`,
-      login: `Se connecter`,
-      sitemap: `Plan du site`,
+      text1: 'En informatique, l’erreur 404 est un code du protocole de communication HTTP sur le réseau Internet pour signaler un incident. Ce code est renvoyé par un serveur HTTP pour indiquer qu\'aucune ressource, généralement une page web, n\'a été trouvée à l\'adresse demandée. Le serveur d\'hébergement de sites web génère généralement une page web « 404 Fichier introuvable » lorsqu\'un utilisateur tente de suivre un lien rompu ou mort ; par conséquent, l\'erreur 404 est l\'une des erreurs les plus reconnaissables et des plus fréquentes rencontrées sur le World Wide Web.',
+      text2: 'Maintenant que vous savez, voici quelques liens pour vous aider:',
+      home: 'Page d\'accueil',
+      login: 'Se connecter',
+      sitemap: 'Plan du site'
     },
     comments: {
       minutes: 'il y a 0 minutes | il y a 1 minute | il y a {count} minutes',
@@ -27,39 +27,37 @@ export default async (context, locale) => {
       edit: 'Éditer',
       reply: 'Répondre',
       like: 'Aimer',
-      delete: 'Supprimer',
-      reply: 'Répondre',
+      delete: 'Supprimer'
     },
     commentForm: {
-      comment: 'Publier',
       cancel: 'Annuler',
-      comment: `Commenter`,
-      reply: 'Répondre',
+      comment: 'Commenter',
+      reply: 'Répondre'
     },
     follow: {
       edit: 'Éditer',
-      follow: 'Suivre',
-      unfollow: 'Se désabonner',
       followed: 'Abonné',
-      following: '',
-      followers: '',
+      followers: '0 Abonnés | 1 Abonné | {count} Abonnés',
+      following: '0 Abonnements | 1 Abonnement | {count} Abonnements',
+      follow: 'S\'abonner',
+      unfollow: 'Se désabonner'
     },
     message: {
-      hello: 'bonjour le monde',
+      hello: 'bonjour le monde'
     },
     hashtag: {
-      publications: 'Publications',
+      publications: 'Publications'
     },
     item: {
       edit: 'Éditer',
       delete: 'Supprimer',
-      delete_q: "Voulez-vous supprimer cette publication ?",
+      delete_q: 'Voulez-vous supprimer cette publication ?',
       post: 'Publier',
       pin: 'Épingler',
-      pin_q: "Voulez-vous épingler cette publication ?",
+      pin_q: 'Voulez-vous épingler cette publication ?',
       unpin: 'Détacher',
-      unpin_q: "Voulez-vous détacher cette publication ?",
-      copy_to_clipboard: "Copier le lien",
+      unpin_q: 'Voulez-vous détacher cette publication ?',
+      copy_to_clipboard: 'Copier le lien',
       copy_success: 'Lien copié',
       share: 'Partager cette publication',
       share_btn: 'Partager',
@@ -68,14 +66,14 @@ export default async (context, locale) => {
     },
     itemNewForm: {
       cancel: 'Annuler',
-      cancel_q: "Voulez-vous annuler cette publication ?",
+      cancel_q: 'Voulez-vous annuler cette publication ?',
       post: 'Publier',
-      whats_happening: "Que se passe-t-il ?",
+      whats_happening: 'Que se passe-t-il ?'
     },
     user: {
       publications: 'Publications',
       banner: {
-        memberSince: 'Membre depuis {date}',
+        memberSince: 'Membre depuis {date}'
       }
     },
     page: {
@@ -87,32 +85,32 @@ export default async (context, locale) => {
         submit: 'Publier',
         errors: {
           title: 'Le titre est obligatoire.',
-          content: 'Le contenu de publication est obligatoire.',
-        },
+          content: 'Le contenu de publication est obligatoire.'
+        }
       },
       edit: {
-        select: 'Sélectionner une langue',
+        select: 'Sélectionner une langue'
       }
     },
     pages: {
       edit: 'Editer',
       locale: 'Langue',
-      title: 'Titre',
+      title: 'Titre'
     },
     posts: {
-      publications: 'Publications',
+      publications: 'Publications'
     },
     post: {
       answer: 'Répondre',
-      add_comment: 'Ajouter un commentaire',
+      add_comment: 'Ajouter un commentaire'
     },
     filter: {
-      title: `Filtrer période`,
-      today: `Aujourd'hui`,
-      day: `24 heures`,
-      week: `7 jours`,
-      month: `30 jours`,
-      all: `Depuis le début`,
+      title: 'Filtrer période',
+      today: 'Aujourd\'hui',
+      day: '24 heures',
+      week: '7 jours',
+      month: '30 jours',
+      all: 'Depuis le début'
     },
     navbar: {
       pages: 'Pages',
@@ -121,7 +119,7 @@ export default async (context, locale) => {
       cancel: 'Annuler',
       logout: 'Se déconnecter',
       login: 'Se connecter',
-      getStarted: `Créer un compte`,
+      getStarted: 'Créer un compte',
       // admin_html: <i class="material-icons md-18">settings</i>
       are_you_sure: 'Êtes-vous sûr ?',
       // bookmarks_html: <i class="material-icons md-18">bookmarks</i>
@@ -143,70 +141,70 @@ export default async (context, locale) => {
       tools: 'Matériel de cuisine',
       top_100: 'Top 100',
       bookmarks: 'Mes favoris',
-      search: 'Rechercher une recette',
+      search: 'Rechercher une recette'
       // top_100_html: <i class="material-icons md-18">whatshot</i>
     },
     login: {
       facebook: {
         login: 'Se connecter avec Facebook',
         logout: 'Se déconnecter',
-        working: 'Chargement ...',
+        working: 'Chargement ...'
       },
       email: 'Adresse Courriel',
-      password: 'Mot de passe',
+      // password: 'Mot de passe',
       submit: 'Se connecter',
-      signup: `Créer un compte`,
-      disclaimer: "Nous ne partagerons jamais vos données personnelles.",
+      signup: 'Créer un compte',
+      disclaimer: 'Nous ne partagerons jamais vos données personnelles.',
       welcome: 'Bienvenue, {firstName} !',
       resendConfirmationInstructions: 'Nous avons envoyé une courriel à {email} !',
       forgetPassword: 'Mot de passe oublié ?',
       password: {
         request: {
           title: 'Retrouvez votre compte',
-          text: `Veuillez saisir l'adresse courriel de votre compte utilisateur et nous vous enverrons un lien de réinitialisation du mot de passe.`,
+          text: 'Veuillez saisir l\'adresse courriel de votre compte utilisateur et nous vous enverrons un lien de réinitialisation du mot de passe.',
           resendConfirmationInstructions: 'Renvoyer les instructions de confirmation.',
-          submit: 'Envoyer',
+          submit: 'Envoyer'
         },
         reset: {
           title: 'Réinitialisation de votre mot de passe',
-          text0: `{firstName}, veuillez saisir votre nouveau mot de passe.`,
-          text1: `Token expiré. Veuillez renouveler votre demande de réinitialisation du mot de passe.`,
+          text0: '{firstName}, veuillez saisir votre nouveau mot de passe.',
+          text1: 'Token expiré. Veuillez renouveler votre demande de réinitialisation du mot de passe.',
           submit: 'Envoyer',
-          success: 'Votre mot de passe a été changé.',
+          success: 'Votre mot de passe a été changé.'
         },
-        email: 'Un courriel avec les instructions pour changer votre mot de passe vous a été envoyé !',
+        email: 'Un courriel avec les instructions pour changer votre mot de passe vous a été envoyé !'
       }
     },
     signUp: {
       confirmation: 'Confirmation du mot de passe',
-      disclaimer: "Nous ne partagerons jamais vos données personnelles.",
+      disclaimer: 'Nous ne partagerons jamais vos données personnelles.',
       email: 'Adresse Courriel',
       firstName: 'Prénom',
       lastName: 'Nom de famille',
       login: 'Se connecter',
       password: 'Mot de passe',
-      signup: `S'inscrire`,
-      submit: `S'inscrire`,
+      signup: 'S\'inscrire',
+      submit: 'S\'inscrire',
       success: 'Vous allez recevoir sous quelques minutes un courriel comportant des instructions pour confirmer votre compte.',
       errors: {
-        email: `L'adresse courriel est obligatoire.`,
-        emailFormat: `Ceci n'est pas une adresse courriel.`,
+        email: 'L\'adresse courriel est obligatoire.',
+        emailFormat: 'Ceci n\'est pas une adresse courriel.',
         firstName: 'Le prénom est obligatoire.',
         lastName: 'Le nom de famille est obligatoire.',
         password: 'Le mot de passe est obligatoire.',
         confirmation: 'Le mot de passe saisi ne correspond pas à la confirmation.',
         passwordLength: 'Veuillez saisir au moins 8 caractères.'
-      },
+      }
     },
     banner: {
       login: 'Se connecter',
-      getStarted: `Créer un compte`,
-      introduction: 'Partagez vos recettes dès maintenant<br/>en toute simplicité',
-      seeRecipes: 'Voir les recettes',
+      getStarted: 'Créer un compte',
+      introduction: 'Partagez dès maintenant<br/>vos recettes avec le monde',
+      seeRecipes: 'Voir les recettes'
     },
     userBanner: {
       followers: '0 Abonnés | 1 Abonné | {count} Abonnés',
-      recipes: '0 Recettes | 1 Recette | {count} Recettes',
+      recipes: '0 Recettes | 1 Recette | {count} Recettes'
       // apple: 'no apples | one apple | {count} apples',
     },
     recipe: {
@@ -215,13 +213,13 @@ export default async (context, locale) => {
       comments: {
         counts: '0 Commentaires | 1 Commentaire | {count} Commentaires',
         addPublicComment: 'Ajouter un commentaire public...',
-        viewReplies: '0 réponses | 1 réponse | {count} réponses',
+        viewReplies: '0 réponses | 1 réponse | {count} réponses'
       },
       delete: {
         submit: 'Supprimer',
         are_you_sure: 'Êtes-vous sûr ?',
         okText: 'Supprimer',
-        cancelText: 'Annuler',
+        cancelText: 'Annuler'
       },
       new: {
         title: 'Titre',
@@ -240,27 +238,21 @@ export default async (context, locale) => {
           youtubeVideoUrl: 'Le lien doit être un lien YouTube.',
           title: 'Le titre est obligatoire.',
           direction: 'Le contenu de publication est obligatoire.',
-          photo: 'La photo est obligatoire.',
-        },
+          photo: 'La photo est obligatoire.'
+        }
       }
     },
     search: {
-      noResult: `Désolé, nous n'avons trouvé aucun résultat correspondant à <em>"{query}"</em>. Merci d'essayer de nouveau avec un autre mot-clé.`
-    },
-    follow: {
-      followers: '0 Abonnés | 1 Abonné | {count} Abonnés',
-      following: '0 Abonnements | 1 Abonnement | {count} Abonnements',
-      follow: `S'abonner`,
-      unfollow: `Se désabonner`,
+      noResult: 'Désolé, nous n\'avons trouvé aucun résultat correspondant à <em>"{query}"</em>. Merci d\'essayer de nouveau avec un autre mot-clé.'
     },
     RegistrationConfirmation: {
-      success: '{firstName}, votre compte est maintenant actif.',
+      success: '{firstName}, votre compte est maintenant actif.'
     },
     notifications: {
       like: {
         recipe: '{user} a aimé votre recette.',
         comment: '{user} a aimé votre commentaire.',
-        reply: '{user} a aimé votre réponse.',
+        reply: '{user} a aimé votre réponse.'
       }
     },
     footer: {
@@ -272,13 +264,13 @@ export default async (context, locale) => {
       url: {
         sitemap: 'plan-du-site',
         privacyPolicy: 'confidentialite',
-        help: 'aide',
+        help: 'aide'
       }
     },
     userSettings: {
       title: 'Paramètres',
       getEmailNotifications: 'Recevoir les notifications par courriel',
-      deleteAccount: 'Supprimer mon compte',
+      deleteAccount: 'Supprimer mon compte'
     },
     userDelete: {
       title: 'Supprimer mon compte',
@@ -291,7 +283,7 @@ export default async (context, locale) => {
       text4: ' à ce sujet avant de supprimer votre compte.',
       text5: 'La suppression de votre compte supprimera le contenu des publications et des commentaires que vous avez faits sur Cuisinier Rebelle.',
       form: 'POURQUOI SUPPRIMEZ-VOUS CE COMPTE? (OPTIONNEL)',
-      checkbox: 'Je comprends que supprimer mon compte est irréversible.',
+      checkbox: 'Je comprends que supprimer mon compte est irréversible.'
     },
     users: {
       settings: {
@@ -305,14 +297,13 @@ export default async (context, locale) => {
           submit: 'Publier',
           success: 'Vous avez changé votre photo de profile.',
           errors: {
-            photo: 'La photo est obligatoire.',
-          },
-          errors: 'La photo est obligatoire.',
+            photo: 'La photo est obligatoire.'
+          }
         }
       },
-      password:{
+      password: {
         errors: {
-          exist: `Votre adresse courriel n'a pas été trouvé.`
+          exist: 'Votre adresse courriel n\'a pas été trouvé.'
         }
       }
     }

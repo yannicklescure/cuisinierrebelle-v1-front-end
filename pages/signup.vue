@@ -106,6 +106,7 @@
 
 export default {
   name: 'Signup',
+  middleware: 'authentication',
   data () {
     return {
       disabled: true,
