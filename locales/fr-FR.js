@@ -269,7 +269,16 @@ export default async (context, locale) => {
     },
     userSettings: {
       title: 'Paramètres',
-      getEmailNotifications: 'Recevoir les notifications par courriel',
+      emailNotifications: {
+        text: 'Notifications par courriel',
+        add: 'Recevoir les notifications par courriel',
+        delete: 'Ne plus recevoir les notifications par courriel'
+      },
+      freemium: {
+        text: 'Publicité',
+        add: 'Activer la publicité',
+        delete: 'Désactiver la publicité'
+      },
       deleteAccount: 'Supprimer mon compte'
     },
     userDelete: {

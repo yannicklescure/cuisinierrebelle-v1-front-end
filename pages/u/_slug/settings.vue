@@ -22,6 +22,7 @@
     </div>
     <div class="mb-3">
       <UsersNotifications />
+      <UsersFreemium />
     </div>
   </div>
 </template>

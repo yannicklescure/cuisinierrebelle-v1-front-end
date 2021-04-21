@@ -11,6 +11,7 @@ export const state = () => ({
     bookmarks: [],
     email: null,
     facebookAuth: false,
+    freemium: false,
     followers: {
       count: 0,
       data: []
@@ -89,6 +90,7 @@ export const mutations = {
       bookmarks: [],
       email: null,
       facebookAuth: false,
+      freemium: false,
       followers: {
         count: 0,
         data: []
@@ -119,7 +121,10 @@ export const mutations = {
     }
   },
   notifications (state, payload) {
-    state.user.notification = payload.data.notification
+    state.user.notification = payload.notification
+  },
+  freemium (state, payload) {
+    state.user.freemium = payload.freemium
   },
   photo (state, payload) {
     state.user.image = payload.image
@@ -183,8 +188,19 @@ export const actions = {
     return response
   },
   async notifications (context, payload) {
-    const response = await api.userNotifications(context, payload)
+    // const response = await api.userNotifications(context, payload)
+    this.$axios.setHeader('Authorization', `Bearer ${this.state.users.sessions.authorization.authorizationToken}`)
+    this.$axios.setHeader('Refresh-Token', this.state.users.sessions.authorization.refreshToken)
+    const response = await this.$axios.$patch(`/v1/notification/${payload.id}`, payload, {})
     this.commit('users/sessions/notifications', response)
+    return response
+  },
+  async freemium (context, payload) {
+    // const response = await api.userNotifications(context, payload)
+    this.$axios.setHeader('Authorization', `Bearer ${this.state.users.sessions.authorization.authorizationToken}`)
+    this.$axios.setHeader('Refresh-Token', this.state.users.sessions.authorization.refreshToken)
+    const response = await this.$axios.$patch(`/v1/freemium/${payload.id}`, payload, {})
+    this.commit('users/sessions/freemium', response)
     return response
   },
   async photo ({ commit }, payload) {

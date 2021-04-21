@@ -8,7 +8,8 @@
         :checked="checked"
         @click="toggle"
       >
-      <label class="custom-control-label" for="Notifications">{{ $t('userSettings.getEmailNotifications') }}</label>
+      <!-- <label class="custom-control-label" for="Notifications">{{ checked ? $t('userSettings.emailNotifications.delete') :$t('userSettings.emailNotifications.add') }}</label> -->
+      <label class="custom-control-label" for="Notifications">{{ $t('userSettings.emailNotifications.text') }}</label>
     </div>
   </div>
 </template>
@@ -27,13 +28,12 @@ export default {
     }
   },
   methods: {
-    toggle () {
+    async toggle () {
       const payload = {
         id: this.currentUser.id,
-        notification: !this.checked
+        notification: !this.checked === true ? 'true' : 'false'
       }
-      this.$store
-        .dispatch('users/sessions/notifications', payload)
+      await this.$store.dispatch('users/sessions/notifications', payload)
     }
   }
 }
