@@ -1,7 +1,7 @@
 <template>
   <div id="user-banner" class="container p-3">
-    <div v-if="user" class="d-flex justify-content-between p-2 p-md-3 bg-light rounded">
-      <div class="mx-md-2 d-flex justify-content-start align-items-center">
+    <div v-if="user" :class="['d-flex justify-content-between p-2 p-md-3 bg-light rounded', { 'flex-column': user.slug !== currentUser.slug && $device.isMobile }]">
+      <div :class="['d-flex justify-content-start align-items-center', { 'mx-2': $device.isDesktop }]">
         <img
           ref="lazyImage"
           :data-src="user.image.preview.url"
@@ -43,14 +43,13 @@
           </div>
         </div>
       </div>
-
-      <div class="mx-md-2 d-flex justify-content-start align-items-center">
+      <div :class="['d-flex justify-content-start align-items-center', { 'mx-2': $device.isDesktop }]">
         <div v-if="user.slug === currentUser.slug">
           <div class="btn" @click="userSettings">
             <span class="material-icons md-24 d-flex">settings</span>
           </div>
         </div>
-        <div v-else>
+        <div v-else :class="[{ 'mt-2 w-100': $device.isMobile }]">
           <BtnFollow :item="user" />
         </div>
       </div>

@@ -181,9 +181,8 @@ export default {
       }
       return true
     },
-    async searchQuery () {
+    searchQuery () {
       if (this.query.length > 0) {
-        await this.$store.dispatch('search/query', { query: this.query })
         this.$router.push({ path: '/search', query: { r: this.query } })
         this.query = ''
       }

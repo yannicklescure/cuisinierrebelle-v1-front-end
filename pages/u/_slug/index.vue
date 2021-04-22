@@ -51,8 +51,38 @@ export default {
       }
     },
     user () {
-      return this.usersFilter(this.$route.params.slug)
-      // return this.item.data
+      const userNull = {
+        id: 0,
+        slug: '',
+        name: '',
+        checked: null,
+        followers: {
+          count: 0,
+          data: []
+        },
+        following: {
+          count: 0,
+          data: []
+        },
+        image: {
+          full: {
+            url: ''
+          },
+          preview: {
+            url: ''
+          },
+          openGraph: {
+            url: ''
+          },
+          thumb: {
+            url: ''
+          }
+        },
+        createdAt: 0
+      }
+
+      const userData = this.usersFilter(this.$route.params.slug)
+      return userData !== undefined ? userData : userNull
     },
     userRecipes () {
       return this.getUserRecipes(this.$route.params.slug)

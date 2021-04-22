@@ -1,12 +1,10 @@
 <template>
-  <div id="default" ref="default">
-    <div class="d-flex flex-column justify-content-between align-items-between">
-      <client-only>
-        <NavbarMobile v-if="$device.isMobile" />
-        <NavbarDesktop v-else />
-      </client-only>
-      <Nuxt keep-alive />
-    </div>
+  <div id="default" ref="default" class="d-flex flex-column justify-content-between align-items-between">
+    <client-only>
+      <NavbarMobile v-if="$device.isMobile" />
+      <NavbarDesktop v-else />
+    </client-only>
+    <Nuxt keep-alive />
   </div>
 </template>
 
@@ -30,8 +28,8 @@ export default {
   },
   methods: {
     adjustDivTop () {
-      this.$refs.default.style.paddingTop = `${parseInt(this.navbarHeight)}px`
-      this.$refs.default.style.minHeight = '100vh'
+      this.$refs.default.style.marginTop = `${parseInt(this.navbarHeight)}px`
+      // this.$refs.default.style.minHeight = '100vh'
     }
   }
 }

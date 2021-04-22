@@ -199,7 +199,7 @@ export default async (context, locale) => {
     banner: {
       login: 'Se connecter',
       getStarted: 'Créer un compte',
-      introduction: 'Partagez dès maintenant<br/>vos recettes avec le monde',
+      introduction: 'Partagez facilement des recettes<br/>avec votre entourage',
       seeRecipes: 'Voir les recettes'
     },
     userBanner: {

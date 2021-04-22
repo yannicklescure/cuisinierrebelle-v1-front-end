@@ -14,8 +14,10 @@
       />
       <client-only>
         <Banner v-if="!isAuthenticated" />
-        <Cards v-if="show" :recipes="recipes" />
-        <Loading v-else />
+        <div>
+          <Cards v-if="show" :recipes="recipes" />
+          <Loading v-else />
+        </div>
       </client-only>
     </div>
   </div>
@@ -48,11 +50,15 @@ export default {
       }
     },
     show () {
-      if (this.isAuthenticated) {
-        return this.currentUser.likes && this.recipes.length > 0
-      } else {
-        return this.recipes.length > 0
-      }
+      // if (this.isAuthenticated) {
+      // return this.currentUser.likes && this.recipes.length > 0
+      return this.recipes.length > 0
+      // } else if (process.client) {
+      // console.log(window.scrollY)
+      // return window.scrollY > 0
+      // } else {
+      //   return false
+      // }
     }
   },
   methods: {

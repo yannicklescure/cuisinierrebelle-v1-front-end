@@ -12,6 +12,10 @@
         :alt="currentUser.slug"
       >
     </div>
+    <div class="mb-3">
+      <UsersNotifications />
+      <UsersFreemium />
+    </div>
     <div class="d-flex flex-column mb-3">
       <NuxtLink :to="`/u/${ currentUser.slug }/photo`">
         {{ $t('users.settings.photo.title') }}
@@ -19,10 +23,6 @@
       <NuxtLink :to="`/u/${ currentUser.slug }/delete`">
         {{ $t('userSettings.deleteAccount') }}
       </NuxtLink>
-    </div>
-    <div class="mb-3">
-      <UsersNotifications />
-      <UsersFreemium />
     </div>
   </div>
 </template>

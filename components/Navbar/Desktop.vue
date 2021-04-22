@@ -1,7 +1,7 @@
 <template>
   <div
     ref="navbar"
-    :class="['d-print-none navbar fixed-top d-flex px-3 py-2 justify-content-between align-items-center bg-white mb-3']"
+    :class="['d-print-none navbar fixed-top d-flex px-3 py-2 justify-content-between align-items-center bg-white']"
   >
     <div class="d-flex align-items-center">
       <div
@@ -177,9 +177,8 @@ export default {
     getNotifications () {
       this.icons.notifications = 'notifications_none'
     },
-    async searchQuery () {
+    searchQuery () {
       if (this.query.length > 0) {
-        await this.$store.dispatch('search/query', { query: this.query })
         this.$router.push({ path: '/search', query: { r: this.query } })
         this.query = ''
       }

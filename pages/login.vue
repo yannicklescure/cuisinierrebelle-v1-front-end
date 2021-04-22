@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="d-flex flex-grow-1">
     <SocialHead
       :title="'Recettes Sociales !'"
       :description="'Partagez vos recettes dès maintenant en toute simplicité'"

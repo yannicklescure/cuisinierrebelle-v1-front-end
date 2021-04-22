@@ -2,14 +2,14 @@
   <div v-if="isAuthenticated">
     <div
       v-if="isFollowing"
-      class="btn btn-sm btn-secondary"
+      :class="['btn btn-sm btn-secondary text-nowrap', { 'w-100': $device.isMobile }]"
       @click="unfollow"
     >
       {{ $t('follow.unfollow') }}
     </div>
     <div
       v-else
-      class="btn btn-sm btn-dark"
+      :class="['btn btn-sm btn-dark text-nowrap', { 'w-100': $device.isMobile }]"
       @click="follow"
     >
       {{ $t('follow.follow') }}

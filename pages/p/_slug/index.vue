@@ -1,16 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container pt-5">
     <div v-if="$fetchState.pending">
       <Loading />
     </div>
     <div v-else-if="$fetchState.error">
       <NotFound />
     </div>
-    <div
-      v-else
-      :key="componentKey"
-      class="container"
-    >
+    <div v-else>
       <SocialHead
         :title="socialMetaData.title"
         :description="socialMetaData.description"
@@ -35,7 +31,6 @@ export default {
   name: 'Page',
   data () {
     return {
-      componentKey: 0,
       item: {
         content: '',
         title: ''

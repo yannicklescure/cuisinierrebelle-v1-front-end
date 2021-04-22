@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-2 d-flex flex-column justify-content-center align-items-center">
+  <div class="d-flex flex-column justify-content-center align-items-center">
     <client-only>
       <div
         ref="banner"
