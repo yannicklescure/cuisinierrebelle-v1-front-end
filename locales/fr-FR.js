@@ -268,7 +268,8 @@ export default async (context, locale) => {
       }
     },
     userSettings: {
-      title: 'Paramètres',
+      title: 'Paramètres de compte',
+      emailPreferences: 'Préférences de courriel',
       emailNotifications: {
         text: 'Notifications par courriel',
         add: 'Recevoir les notifications par courriel',

@@ -29,7 +29,7 @@ export default {
   methods: {
     adjustDivTop () {
       this.$refs.default.style.marginTop = `${parseInt(this.navbarHeight)}px`
-      this.$refs.default.style.minHeight = '100vh'
+      this.$refs.default.style.minHeight = `calc(100vh - ${parseInt(this.navbarHeight)}px)`
     }
   }
 }
