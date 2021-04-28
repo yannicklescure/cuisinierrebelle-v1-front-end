@@ -6,10 +6,14 @@
           :to="`/u/${ currentUser.slug }/photo`"
           :style="`display:block;height:96px;width:96px;background-image: url('${currentUser.image.preview.url}');background-size: cover;`"
           class="rounded img-fluid d-flex justify-content-center align-items-center text-decoration-none text-white"
+          @click.native="hover = false"
           @mouseover.native="hover = true"
           @mouseleave.native="hover = false"
         >
-          <span v-show="hover" class="material-icons md-48">
+          <span
+            v-show="hover"
+            class="material-icons md-48"
+          >
             photo_camera
           </span>
         </NuxtLink>
