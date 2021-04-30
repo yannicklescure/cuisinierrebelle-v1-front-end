@@ -88,6 +88,11 @@ export default {
       return this.getUserRecipes(this.$route.params.slug)
     }
   },
+  // watch: {
+  //   $route () {
+  //     this.$fetch()
+  //   }
+  // },
   methods: {
     ...mapActions({
       getUser: 'users/getUser',
