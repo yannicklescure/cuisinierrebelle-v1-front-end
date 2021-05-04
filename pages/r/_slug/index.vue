@@ -17,12 +17,7 @@
 
       <LazyBtnSocialSharing v-if="$device.isDesktop" :item="item" />
 
-      <div v-if="!currentUser.freemium" class="w-100 my-5">
-        <adsbygoogle
-          :ad-style="{ display: 'block' }"
-          ad-slot="7782275531"
-        />
-      </div>
+      <LazyAds />
 
       <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
 
@@ -60,7 +55,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/user',
+      // currentUser: 'users/sessions/user',
       // recipe: 'recipes/recipe',
       recipes: 'recipes/list',
       timestamp: 'timestamp'
