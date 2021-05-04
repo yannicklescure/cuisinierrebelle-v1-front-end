@@ -30,7 +30,6 @@ export default {
   },
   mounted () {
     this.$refs.lazyImage.src = this.$refs.lazyImage.dataset.src
-    // this.$nextTick(() => {})
   }
 }
 </script>

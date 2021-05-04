@@ -52,8 +52,6 @@ export default {
     }
   },
   async fetch () {
-    // TO DO
-    // check if recipe exists in store or fetch
     await this.getRecipe(this.$route.params.slug)
     const refresh = this.timestamp !== null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
     if (refresh) {
