@@ -21,7 +21,7 @@
 
       <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
 
-      <Comments :item="item" @refresh="$fetch" />
+      <LazyComments :item="item" @refresh="refresh" />
     </client-only>
   </div>
 </template>

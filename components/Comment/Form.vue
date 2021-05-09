@@ -51,7 +51,7 @@ export default {
       default: null
     },
     text: {
-      type: Text,
+      type: String,
       default: null
     }
   },

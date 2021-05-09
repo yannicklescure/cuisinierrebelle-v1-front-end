@@ -48,20 +48,29 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Comments',
-  props: {
-    item: {
-      type: Object,
-      default: null
-    }
-  },
+  // props: {
+  //   item: {
+  //     type: Object,
+  //     default: null
+  //   }
+  // },
   data () {
     return {
       show: []
     }
   },
   computed: {
+    ...mapGetters({
+      recipes: 'recipes/list'
+    }),
+    item () {
+      const position = this.recipes.findIndex(item => item.recipe.slug === this.$route.params.slug)
+      return position > -1 ? this.recipes[position] : undefined
+    },
     count () {
       if (this.item.comments) {
         const counts = this.item.comments.map(comment => comment.replies.length)
@@ -105,8 +114,8 @@ export default {
       this.$set(this.show, index, !this.show[index])
     },
     initShow () {
-      this.show = [...new Array(this.item.comments.length)].map(() => true)
-      // this.show = [...new Array(this.item.comments.length)].map(() => false)
+      // this.show = [...new Array(this.item.comments.length)].map(() => true)
+      this.show = [...new Array(this.item.comments.length)].map(() => false)
     }
   }
 }
