@@ -1,6 +1,16 @@
 <template>
   <div>
     <div v-if="isAuthenticated" class="mt-2 d-flex align-items-center">
+      <div
+        class="d-flex text-muted mx-2 mouse-pointer"
+        data-toggle="tooltip"
+        data-placement="bottom"
+        :title="$t('comments.reply')"
+        @click="commentReply"
+      >
+        {{ $t('comments.reply') }}
+        <!-- <span class="material-icons md-16">reply</span> -->
+      </div>
       <BtnCommentLike :item="item" :type="type" />
       <div
         v-if="item.user.id == currentUser.id"
@@ -21,16 +31,6 @@
         @click="isComment2Destroy"
       >
         <span class="material-icons md-16">delete</span>
-      </div>
-      <div
-        class="d-flex text-muted mx-2 mouse-pointer"
-        data-toggle="tooltip"
-        data-placement="bottom"
-        :title="$t('comments.reply')"
-        @click="commentReply"
-      >
-        {{ $t('comments.reply') }}
-        <!-- <span class="material-icons md-16">reply</span> -->
       </div>
     </div>
     <div v-else class="mt-2 d-flex align-items-center">

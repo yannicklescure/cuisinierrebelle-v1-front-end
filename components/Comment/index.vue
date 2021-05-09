@@ -1,6 +1,6 @@
 <template>
-  <div :id="type + item.id" :ref="type + item.id" :class="['pt-3 pb-2', { 'ml-2': type == 'reply' }]">
-    <div class="d-flex align-items-center">
+  <div class="d-flex">
+    <div class="pt-3">
       <img
         :src="item.user.image.thumb.url"
         :alt="item.user.name"
@@ -8,43 +8,47 @@
         height="24"
         class="rounded-circle"
       >
-      <NuxtLink
-        :to="`/u/${ item.user.slug }`"
-        class="mx-2 text-capitalize text-body"
-        style="font-size: 90%"
-      >
-        {{ item.user.name }}
-      </NuxtLink>
-      <small class="text-muted">{{ timeAgo(item.timestamp) }}</small>
     </div>
-    <div v-if="edit">
-      <CommentForm
+    <div :id="type + item.id" :ref="type + item.id" :class="['pt-3 pb-2']">
+      <div class="d-flex align-items-center pt-1">
+        <NuxtLink
+          :to="`/u/${ item.user.slug }`"
+          class="mx-2 text-capitalize text-body"
+          style="font-size: 90%"
+        >
+          {{ item.user.name }}
+        </NuxtLink>
+        <small class="text-muted">{{ timeAgo(item.timestamp) }}</small>
+      </div>
+      <div v-if="edit">
+        <CommentForm
+          :item="item"
+          :action-attr="editActionAttr()"
+          :text="item.content"
+          @commentEditResponse="commentEditResponse"
+          @commentDrop="commentDrop"
+          @commentNew="commentNew"
+        />
+      </div>
+      <div v-else class="pt-2 mx-2">
+        <Markdown :source="item.content" class="text-break" />
+      </div>
+      <CommentButtons
         :item="item"
-        :action-attr="editActionAttr()"
-        :text="item.content"
-        @commentEditResponse="commentEditResponse"
-        @commentDrop="commentDrop"
-        @commentNew="commentNew"
+        :type="type"
+        @commentEdit="commentEdit"
+        @commentReply="commentReply"
+        @commentDestroyed="commentDestroyed"
       />
-    </div>
-    <div v-else class="pt-2">
-      <Markdown :source="item.content" class="text-break" />
-    </div>
-    <CommentButtons
-      :item="item"
-      :type="type"
-      @commentEdit="commentEdit"
-      @commentReply="commentReply"
-      @commentDestroyed="commentDestroyed"
-    />
-    <div v-if="reply">
-      <CommentForm
-        :item="item"
-        :action-attr="'replyNew'"
-        :text="null"
-        @commentReplyNew="commentReplyNew"
-        @commentDrop="commentDrop"
-      />
+      <div v-if="reply">
+        <CommentForm
+          :item="item"
+          :action-attr="'replyNew'"
+          :text="null"
+          @commentReplyNew="commentReplyNew"
+          @commentDrop="commentDrop"
+        />
+      </div>
     </div>
   </div>
 </template>

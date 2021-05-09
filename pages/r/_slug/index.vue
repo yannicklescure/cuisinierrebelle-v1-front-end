@@ -13,15 +13,15 @@
         <RecipeDesktop :item="item" :dimension="dimension" />
       </div>
 
-      <LazyYoutube :item="item" />
+      <Youtube :item="item" />
 
-      <LazyBtnSocialSharing v-if="$device.isDesktop" :item="item" />
+      <BtnSocialSharing v-if="$device.isDesktop" :item="item" />
 
-      <LazyAds />
+      <Ads />
 
-      <LazyOtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
+      <OtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
 
-      <LazyComments :item="item" @refresh="refresh" />
+      <Comments />
     </client-only>
   </div>
 </template>

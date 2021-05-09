@@ -36,7 +36,7 @@
             <Comment
               :item="reply"
               :type="'reply'"
-              class="border-left pl-3 flex-grow-1"
+              class="ml-5 flex-grow-1"
               @commentDestroyed="commentDestroyed"
               @commentReplyNew="commentReplyNew"
             />
@@ -85,7 +85,7 @@ export default {
       }
     },
     comments () {
-      return this.item.comments
+      return this.item.comments.slice().sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1).reverse()
     },
     lastCommentId () {
       return this.count > 0 ? this.item.comments[this.item.comments.length - 1].id : 0
@@ -114,7 +114,6 @@ export default {
       this.$set(this.show, index, !this.show[index])
     },
     initShow () {
-      // this.show = [...new Array(this.item.comments.length)].map(() => true)
       this.show = [...new Array(this.item.comments.length)].map(() => false)
     }
   }
