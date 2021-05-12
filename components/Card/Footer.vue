@@ -4,14 +4,11 @@
     <div :class="['d-flex flex-column', $device.isMobile ? 'p-0' : 'p-0']">
       <NuxtLink
         :to="`/r/${ item.recipe.slug }`"
-        class="card-link text-body text-uppercase"
+        class="card-link text-body font-weight-normal"
       >
         {{ item.recipe.title }}
       </NuxtLink>
-      <div
-        class="card-text font-weight-lighter"
-        style="font-size: 90%"
-      >
+      <div class="card-text font-weight-light">
         {{ item.recipe.description }}
       </div>
     </div>

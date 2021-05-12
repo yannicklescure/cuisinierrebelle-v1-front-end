@@ -1,12 +1,16 @@
 import * as api from '~/api'
 
 export const state = () => ({
+  country: 'FR',
+  ipAddress: '0.0.0.0',
   isAuthenticated: false
 })
 
 export const mutations = {
   isAuthenticated (state, payload) {
     state.isAuthenticated = payload.isAuthenticated
+    state.ipAddress = payload.ipAddress
+    state.country = payload.country
   }
 }
 
@@ -43,5 +47,11 @@ export const actions = {
 export const getters = {
   isAuthenticated (state, getters) {
     return state.isAuthenticated
+  },
+  geolocation (state, getters) {
+    return {
+      ipAddress: state.ipAddress,
+      country: state.country
+    }
   }
 }

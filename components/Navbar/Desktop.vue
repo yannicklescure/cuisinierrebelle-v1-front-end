@@ -23,6 +23,11 @@
       >
     </div>
     <div class="d-flex align-items-center">
+      <div>
+        <NuxtLink to="products" class="nav-item text-body text-decoration-none">
+          Matériel de cuisine
+        </NuxtLink>
+      </div>
       <div
         v-if="isAuthenticated"
         class="d-flex align-items-center"
@@ -99,7 +104,7 @@
       >
         <NuxtLink
           to="/login"
-          class="btn btn-sm text-body text-decoration-none mx-2"
+          class="nav-item text-body text-decoration-none"
         >
           {{ $t('navbar.login') }}
         </NuxtLink>
