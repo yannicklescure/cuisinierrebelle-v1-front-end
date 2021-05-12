@@ -24,8 +24,8 @@
     </div>
     <div class="d-flex align-items-center">
       <div>
-        <NuxtLink to="products" class="nav-item text-body text-decoration-none">
-          Matériel de cuisine
+        <NuxtLink to="/products" class="nav-item text-body text-decoration-none">
+          {{ $t('navbar.products') }}
         </NuxtLink>
       </div>
       <div

@@ -21,9 +21,15 @@
       <div class="h1 mb-3">
         {{ $t('userSettings.title') }}
       </div>
+      <div class="mb-3">
+        {{ $t('users.settings.ipAddress', { ipAddress: geolocation.ipAddress }) }}
+      </div>
       <div class="d-flex flex-column mb-3">
         <NuxtLink :to="`/u/${ currentUser.slug }/photo`">
           {{ $t('users.settings.photo.title') }}
+        </NuxtLink>
+        <NuxtLink :to="`/u/${ currentUser.slug }/delete`">
+          {{ $t('userSettings.deleteAccount') }}
         </NuxtLink>
       </div>
       <div class="mb-3">
@@ -33,14 +39,6 @@
         <UsersNotifications />
         <UsersFreemium />
       </div>
-    </div>
-    <div class="mb-3">
-      <NuxtLink
-        :to="`/u/${ currentUser.slug }/delete`"
-        class="btn btn-danger"
-      >
-        {{ $t('userSettings.deleteAccount') }}
-      </NuxtLink>
     </div>
   </div>
 </template>
@@ -57,9 +55,13 @@ export default {
       hover: false
     }
   },
+  async fetch () {
+    await this.$store.dispatch('users/authentication/isAuthenticated', null)
+  },
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/user'
+      currentUser: 'users/sessions/user',
+      geolocation: 'users/authentication/geolocation'
     })
   }
 }

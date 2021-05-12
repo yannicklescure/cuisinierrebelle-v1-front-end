@@ -113,6 +113,7 @@ export default async (context, locale) => {
       all: 'Depuis le début'
     },
     navbar: {
+      products: 'Matériel de cuisine',
       pages: 'Pages',
       admin: 'Administration',
       brand: 'Cuisinier Rebelle',
@@ -297,6 +298,7 @@ export default async (context, locale) => {
     },
     users: {
       settings: {
+        ipAddress: 'Votre adresse IP: {ipAddress}',
         title: 'Paramètres',
         back: 'Retour',
         photo: {

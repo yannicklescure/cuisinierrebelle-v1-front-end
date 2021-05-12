@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div v-if="show" class="row">
       <div v-for="(product, index) in products" :key="index" :class="['p-2 col-12 col-md-4 col-lg-3']">
         <div class="card d-flex flex-column flex-grow-1 justify-content-between" style="height: 100%">
           <div class="d-flex flex-column">
@@ -59,8 +59,12 @@ export default {
             provider: 'Amazon'
           }
         ]
-      }
+      },
+      show: false
     }
+  },
+  async fetch () {
+    await this.$store.dispatch('users/authentication/isAuthenticated', null)
   },
   computed: {
     ...mapGetters({
@@ -69,6 +73,9 @@ export default {
     products () {
       return this.geolocation.country === 'FR' ? this.list.france : this.list.international
     }
+  },
+  mounted () {
+    this.show = true
   }
 }
 </script>
