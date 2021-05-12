@@ -298,7 +298,7 @@ export default async (context, locale) => {
     },
     users: {
       settings: {
-        ipAddress: 'Votre adresse IP: {ipAddress}',
+        ipAddress: 'Mon adresse IP: {ipAddress}',
         title: 'Paramètres',
         back: 'Retour',
         photo: {
