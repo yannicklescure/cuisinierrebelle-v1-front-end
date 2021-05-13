@@ -71,7 +71,7 @@ export default {
       if ((/\W/).test(arr[length - 1])) {
         length -= 1
       }
-      return str.length <= length ? str : str.slice(0, length) + '&hellip;'
+      return str.length < length ? str : str.slice(0, length) + '...'
     }
   }
 }
