@@ -34,6 +34,13 @@
       <div v-if="show" class="mt-2 d-flex flex-column w-100 vh-100">
         <div v-if="isAuthenticated" class="d-flex flex-column">
           <NuxtLink
+            to="/products"
+            class="text-body lead my-2 text-decoration-none"
+            @click.native="collapse"
+          >
+            {{ $t('navbar.products') }}
+          </NuxtLink>
+          <NuxtLink
             :to="`/u/${ currentUser.slug }`"
             class="text-body lead my-2 text-decoration-none"
             @click.native="collapse"

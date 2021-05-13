@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div v-if="show" class="row">
-      <div v-for="(product, index) in products" :key="index" :class="['p-2 col-12 col-md-4 col-lg-3']">
+    <div v-if="show" class="row p-3">
+      <div v-for="(product, index) in products" :key="index" :class="['p-0 col-12 col-md-4 col-lg-3']">
         <div class="card d-flex flex-column flex-grow-1 justify-content-between" style="height: 100%">
           <div class="d-flex flex-column">
             <img
