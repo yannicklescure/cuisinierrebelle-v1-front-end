@@ -2,28 +2,7 @@
   <div class="container">
     <div v-if="show" class="row p-3">
       <div v-for="(product, index) in products" :key="index" :class="['p-0 col-12 col-md-4 col-lg-3']">
-        <div class="card d-flex flex-column flex-grow-1 justify-content-between" style="height: 100%">
-          <div class="d-flex flex-column">
-            <img
-              :src="product.image.src"
-              alt=""
-              width="100%"
-              style="object-fit: cover"
-            >
-            <div class="mt-2 font-weight-normal">
-              {{ product.title }}
-            </div>
-            <div class="font-weight-light mt-2">
-              {{ product.description }}
-            </div>
-          </div>
-          <a :href="product.link" target="_blank" class="mt-2 btn btn-info d-flex justify-content-center align-items-center">
-            <span class="mr-2 material-icons md-18">
-              open_in_new
-            </span>
-            {{ product.provider }}
-          </a>
-        </div>
+        <product :product="product" />
       </div>
     </div>
   </div>
@@ -46,6 +25,15 @@ export default {
             },
             link: 'https://amzn.to/3w3ryrU',
             provider: 'Amazon'
+          },
+          {
+            title: 'Fouet danois',
+            description: 'Ce fouet danois est plus efficace et plus rapide que les fouets traditionnels. Adaptée pour mélanger les pâtes épaisses comme par exemple les pâtes à pain, pâtes à gâteaux et même des purées.',
+            image: {
+              src: 'https://images-na.ssl-images-amazon.com/images/I/71--8um8JML._AC_SL1500_.jpg'
+            },
+            link: 'https://amzn.to/2RZF0OL',
+            provider: 'Amazon'
           }
         ],
         international: [
@@ -56,6 +44,15 @@ export default {
               src: 'https://images-na.ssl-images-amazon.com/images/I/71tN09vv0jL._AC_SL1500_.jpg'
             },
             link: 'https://amzn.to/3bp1GP0',
+            provider: 'Amazon'
+          },
+          {
+            title: 'Fouet danois',
+            description: 'Ce fouet danois est plus efficace et plus rapide que les fouets traditionnels. Adaptée pour mélanger les pâtes épaisses comme par exemple les pâtes à pain, pâtes à gâteaux et même des purées.',
+            image: {
+              src: 'https://images-na.ssl-images-amazon.com/images/I/71--8um8JML._AC_SL1500_.jpg'
+            },
+            link: 'https://amzn.to/3frjydf',
             provider: 'Amazon'
           }
         ]
