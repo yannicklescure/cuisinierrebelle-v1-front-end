@@ -83,36 +83,38 @@ export default {
         this.$router.push({ path: '/' })
       }
     },
-    deleteAccount () {
+    async deleteAccount () {
       const checkForm = this.checkForm()
       if (checkForm) {
-        const payload = {
-          content: this.content
-        }
-        this.$store.dispatch('users/sessions/delete', payload)
-          .then((response) => {
-            if (response.status === 200) {
-              this.$toast.info(this.$t('userDelete.success'), {
-                position: 'bottom-center',
-                duration: 3000 // Visibility duration in milliseconds
-              })
-              // this.$router.push({ name: 'Home' })
-              this.logout()
-            } else if (response.response) {
-              // client received an error response (5xx, 4xx)
-              this.errors.push(response.response)
-            } else if (response.request) {
-              // client never received a response, or request never left
-              this.errors.push(response.request)
-            } else {
-              // anything else
-              this.errors.push(response)
+        this.disabled = true
+        try {
+          const payload = {
+            content: this.content
+          }
+          const response = await this.$store.dispatch('users/sessions/delete', payload)
+          // console.log(response)
+          if (response.status === 'success') {
+            this.$toast.info(this.$t('userDelete.success'), {
+              position: 'bottom-center',
+              duration: 3000 // Visibility duration in milliseconds
+            })
+            // this.$router.push({ name: 'Home' })
+            // this.logout()
+            if (this.$route.path !== '/') {
+              this.$router.push({ path: '/' })
             }
-          })
-      } else {
+          }
+        } catch (e) {
+          this.errors.push(e.response.data.message)
+          this.showDismissibleAlert = true
+          this.disabled = false
+          this.posting = false
+        }
+      }
+      if (this.errors[0]) {
         this.$toast.error(this.errors[0], {
           position: 'bottom-center',
-          duration: 3000 // Visibility duration in milliseconds
+          duration: 3000
         })
       }
     }

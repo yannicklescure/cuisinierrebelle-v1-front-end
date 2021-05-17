@@ -1,7 +1,7 @@
 <template>
   <div ref="settings" class="container d-flex flex-column flex-grow-1 justify-content-between">
     <div>
-      <div class="my-3">
+      <div v-if="currentUser.authentication_token != null" class="my-3">
         <NuxtLink
           :to="`/u/${ currentUser.slug }/photo`"
           :style="`display:block;height:96px;width:96px;background-image: url('${currentUser.image.preview.url}');background-size: cover;`"
@@ -21,8 +21,11 @@
       <div class="h1 mb-3">
         {{ $t('userSettings.title') }}
       </div>
-      <div class="mb-3">
-        {{ $t('users.settings.ipAddress', { ipAddress: geolocation.ipAddress }) }}
+      <div class="d-flex flex-column mb-3">
+        <div class="lead">
+          {{ currentUser.name }}
+        </div>
+        <div>{{ $t('users.settings.ipAddress', { ipAddress: geolocation.ipAddress }) }}</div>
       </div>
       <div class="d-flex flex-column mb-3">
         <NuxtLink :to="`/u/${ currentUser.slug }/photo`">

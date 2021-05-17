@@ -7,10 +7,10 @@
     />
     <client-only>
       <div v-if="$device.isMobile">
-        <RecipeMobile :item="item" :dimension="dimension" />
+        <RecipeMobile v-if="dimension.width > 0" :item="item" :dimension="dimension" />
       </div>
       <div v-else>
-        <RecipeDesktop :item="item" :dimension="dimension" />
+        <RecipeDesktop v-if="dimension.width > 0" :item="item" :dimension="dimension" />
       </div>
 
       <Youtube :item="item" />

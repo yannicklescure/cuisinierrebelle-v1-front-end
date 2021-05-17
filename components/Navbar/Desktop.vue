@@ -12,7 +12,7 @@
         <span>{{ $t('navbar.brand') }}</span>
       </div>
     </div>
-    <div class="form-group  d-flex flex-grow-1 mx-5">
+    <div class="form-group  d-flex flex-grow-1">
       <input
         ref="searchInput"
         v-model="query"
@@ -165,8 +165,8 @@ export default {
     window.removeEventListener('scroll', this.handleScroll)
   },
   mounted () {
-    this.navbarHeight()
-    // this.handleScroll()
+    this.fetchRecipes()
+    this.$store.dispatch('navbarHeight', parseInt(this.$refs.navbar.offsetHeight))
     // window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
@@ -204,6 +204,7 @@ export default {
       } else {
         this.$router.push({ path: '/' })
       }
+      this.fetchRecipes()
     },
     handleScroll (event) {
       // Code to be executed when the window is scrolled
@@ -235,9 +236,6 @@ export default {
         .catch(() => {
           // console.log('Clicked on cancel')
         })
-    },
-    navbarHeight () {
-      this.$store.dispatch('navbarHeight', parseInt(this.$refs.navbar.offsetHeight))
     }
   }
 }

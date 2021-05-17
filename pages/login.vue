@@ -248,7 +248,8 @@ export default {
           this.disabled = false
           this.posting = false
         }
-      } else {
+      }
+      if (this.errors[0]) {
         this.$toast.error(this.errors[0], {
           position: 'bottom-center',
           duration: 3000

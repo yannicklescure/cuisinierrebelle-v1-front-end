@@ -133,7 +133,16 @@ export const mutations = {
 
 export const actions = {
   async delete (context, payload) {
-    const response = await api.userDelete(context, payload)
+    // const response = await api.userDelete(context, payload)
+    this.$axios.setHeader('Authorization', `Bearer ${this.state.users.sessions.authorization.authorizationToken}`)
+    const response = await this.$axios.$delete('/users/delete', payload)
+    if (response.status === 'success') {
+      // this.$axios.setHeader('Authorization', `Bearer ${this.state.users.sessions.authorization.authorizationToken}`)
+      // const response = await this.$axios.$delete('/users/sign_out')
+      this.commit('users/sessions/logOut', payload)
+      this.commit('notifications/logOut', null)
+      this.commit('users/authentication/isAuthenticated', { isAuthenticated: false })
+    }
     // this.commit('logOut', {})
     return response
   },

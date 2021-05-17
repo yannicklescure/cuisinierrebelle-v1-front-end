@@ -190,6 +190,7 @@ export default {
       // console.log(this.email)
       const checkForm = this.checkForm()
       if (checkForm) {
+        this.disabled = true
         const payload = {
           user: {
             first_name: this.firstName,

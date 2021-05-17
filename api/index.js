@@ -379,15 +379,15 @@ export const resendConfirmationInstructions = async (context, payload) => {
   })
 }
 
-export const userDelete = async (context, payload) => {
-  return await axios({
-    method: 'delete',
-    url: `${process.env.apiUrl}/users/delete`,
-    headers: {
-      Authorization: `Bearer ${context.rootState.users.sessions.authorization.authorizationToken}`
-    },
-    data: {
-      content: payload.content
-    }
-  })
-}
+// export const userDelete = async (context, payload) => {
+//   return await axios({
+//     method: 'delete',
+//     url: `${process.env.apiUrl}/users/delete`,
+//     headers: {
+//       Authorization: `Bearer ${context.rootState.users.sessions.authorization.authorizationToken}`
+//     },
+//     data: {
+//       content: payload.content
+//     }
+//   })
+// }

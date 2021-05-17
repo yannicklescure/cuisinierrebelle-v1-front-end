@@ -176,9 +176,15 @@ export default {
       }
     }
   },
-  mounted () {
-    this.navbarHeight()
+  beforeMount () {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeDestroy () {
     window.removeEventListener('scroll', this.handleScroll)
+  },
+  mounted () {
+    this.$store.dispatch('navbarHeight', parseInt(this.$refs.navbar.offsetHeight))
+    // window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
     ...mapActions({
@@ -262,9 +268,6 @@ export default {
         .catch(() => {
           // console.log('Clicked on cancel')
         })
-    },
-    navbarHeight () {
-      this.$store.dispatch('navbarHeight', parseInt(this.$refs.navbar.offsetHeight))
     }
   }
 }
