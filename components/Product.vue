@@ -2,7 +2,7 @@
   <div ref="product" class="card p-2 d-flex flex-column flex-grow-1 justify-content-between" style="height: 100%">
     <div class="d-flex flex-column">
       <img
-        :src="product.image.src"
+        :src="product.image.card.url"
         alt=""
         :width="dimension.width"
         :height="dimension.height"
