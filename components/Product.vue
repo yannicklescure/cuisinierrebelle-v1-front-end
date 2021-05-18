@@ -16,7 +16,7 @@
         {{ product.description }}
       </div>
     </div>
-    <a :href="product.link" target="_blank" class="mt-2 btn btn-info d-flex justify-content-center align-items-center">
+    <a :href="product.url" target="_blank" class="mt-2 btn btn-info d-flex justify-content-center align-items-center">
       <span class="mr-2 material-icons md-18">
         open_in_new
       </span>
