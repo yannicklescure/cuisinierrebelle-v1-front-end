@@ -23,23 +23,23 @@
               <i class="material-icons md-16">verified_user</i>
             </span>
           </div>
-          <div class="small text-secondary">
-            {{ $t('user.banner.memberSince', { date: userCreatedAt(user.createdAt) }) }}
-          </div>
           <div class="d-flex align-items-center text-secondary">
             <NuxtLink
               :to="`/u/${ user.slug }`"
-              class="d-flex align-items-center text-decoration-none text-secondary"
+              class="d-flex align-items-center text-secondary"
             >
               <small>{{ $tc('userBanner.recipes', countUserRecipes) }}</small>
             </NuxtLink>
-            <span>&nbsp;/&nbsp;</span>
+            <span>&nbsp;|&nbsp;</span>
             <NuxtLink
               :to="`/u/${ user.slug }/followers`"
-              class="d-flex align-items-center text-decoration-none text-secondary"
+              class="d-flex align-items-center text-secondary"
             >
               <small>{{ $tc('userBanner.followers', countFollowers) }}</small>
             </NuxtLink>
+          </div>
+          <div class="small text-secondary">
+            {{ $t('user.banner.memberSince', { date: userCreatedAt(user.createdAt) }) }}
           </div>
         </div>
       </div>
