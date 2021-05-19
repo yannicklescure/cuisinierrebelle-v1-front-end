@@ -16,8 +16,8 @@
         :image="socialMetaData.image"
       />
       <client-only>
-        <Cards v-show="show" :recipes="recipes" />
-        <Loading v-show="!show" />
+        <Cards v-if="show" :recipes="recipes" />
+        <Loading v-else />
       </client-only>
     </div>
   </div>
