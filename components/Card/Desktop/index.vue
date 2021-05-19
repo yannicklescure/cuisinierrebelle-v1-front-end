@@ -4,31 +4,34 @@
       <div
         :style="`width: ${dimension.width}px; height: ${dimension.height}px; background-image: url('${item.recipe.photo.card.url}');background-size: cover;`"
         :class="['card-img-top d-flex justify-content-start align-items-end']"
-        @mouseenter="hover = true"
-        @mouseleave="hover = false"
+        @mouseenter="show = true"
+        @mouseleave="show = false"
       >
-        <div
-          v-if="hover"
-          class="w-100 p-3 d-flex justify-content-between align-items-center"
-          style="background-color: rgba(0,0,0,0.5);"
-        >
-          <NuxtLink :to="`/r/${ item.recipe.slug }`">
-            <div
-              v-b-tooltip.hover
-              class="d-inline-block text-truncate text-white"
-              :style="`max-width: ${dimension.width * 0.7}px`"
-              :title="item.recipe.title"
-            >
-              {{ title }}
-            </div>
-          </NuxtLink>
+        <transition name="slide">
           <div
-            class="d-flex bg-white justify-content-center align-items-center rounded-circle"
-            style="height: 40px; width: 40px;"
+            v-if="show"
+            ref="navbar"
+            class="w-100 p-3 d-flex justify-content-between align-items-center"
+            style="background-color: rgba(0,0,0,0.5);"
           >
-            <BtnBookmark :item="item" />
+            <NuxtLink :to="`/r/${ item.recipe.slug }`">
+              <div
+                v-b-tooltip.hover
+                class="d-inline-block text-truncate text-white"
+                :style="`max-width: ${dimension.width * 0.7}px`"
+                :title="item.recipe.title"
+              >
+                {{ item.recipe.title }}
+              </div>
+            </NuxtLink>
+            <div
+              class="d-flex bg-white justify-content-center align-items-center rounded-circle"
+              style="height: 40px; width: 40px;"
+            >
+              <BtnBookmark :item="item" />
+            </div>
           </div>
-        </div>
+        </transition>
       </div>
     </div>
     <div :class="['card-footer border-0 bg-white p-0']">
@@ -52,8 +55,8 @@
           </NuxtLink>
         </div>
         <div :class="['d-flex justify-content-between', $device.isMobile ? 'align-items-start' : 'align-items-center']">
-          <BtnLike :item="item" class="mr-1" />
-          <BtnVisit :item="item" />
+          <BtnLike :item="item" />
+          <BtnVisit :item="item" class="ml-3" />
           <!-- <BtnComment :item="item" /> -->
           <!-- <BtnShare :item="item" /> -->
           <!-- <BtnBookmark :item="item" /> -->
@@ -79,17 +82,8 @@ export default {
         width: 0,
         height: 0
       },
-      hover: false,
-      title: this.item.recipe.title
+      show: false
     }
-  },
-  updated () {
-    this.$nextTick(() => {
-      if (this.hover) {
-        // this.title = this.tuncateString(this.item.recipe.title)
-        // this.title = this.item.recipe.title
-      }
-    })
   },
   mounted () {
     this.$emit('cardReady', this.item.recipe.id)
@@ -108,4 +102,35 @@ export default {
 </script>
 
 <style>
+.slide-enter-active {
+   -moz-transition-duration: 0.3s;
+   -webkit-transition-duration: 0.3s;
+   -o-transition-duration: 0.3s;
+   transition-duration: 0.3s;
+   -moz-transition-timing-function: ease-in;
+   -webkit-transition-timing-function: ease-in;
+   -o-transition-timing-function: ease-in;
+   transition-timing-function: ease-in;
+}
+
+.slide-leave-active {
+   -moz-transition-duration: 0.3s;
+   -webkit-transition-duration: 0.3s;
+   -o-transition-duration: 0.3s;
+   transition-duration: 0.3s;
+   -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+   -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+   -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slide-enter-to, .slide-leave {
+   max-height: 72px;
+   overflow: hidden;
+}
+
+.slide-enter, .slide-leave-to {
+   overflow: hidden;
+   max-height: 48px;
+}
 </style>

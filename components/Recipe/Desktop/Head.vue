@@ -37,10 +37,10 @@
     <div class="d-flex order-0 justify-content-between d-print-none">
       <div class="d-flex align-items-center justify-content-end order-1 w-100">
         <div class="d-flex order-1 align-items-center">
-          <BtnVisit :item="item" />
           <BtnPrint :item="item" />
-          <BtnLike :item="item" />
-          <BtnBookmark :item="item" />
+          <BtnBookmark :item="item" class="ml-3" />
+          <BtnLike :item="item" class="ml-3" />
+          <BtnVisit :item="item" class="ml-3" />
         </div>
       </div>
     </div>

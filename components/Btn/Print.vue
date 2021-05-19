@@ -1,5 +1,5 @@
 <template>
-  <div id="print" @click="print" class="mouse-pointer ml-3 text-decoration-none text-body">
+  <div id="print" class="mouse-pointer text-decoration-none text-body" @click="print">
     <i class="material-icons md-18 d-flex btn-print">print</i>
   </div>
 </template>
@@ -9,22 +9,21 @@
 
 export default {
   name: 'BtnPrint',
-  props: ['item'],
-  // data () {
-  //   return {}
-  // },
-  // computed: {
-  //   // ...mapGetters(['isAuthenticated', 'user']),
-  // },
+  props: {
+    item: {
+      type: Object,
+      default: null
+    }
+  },
   methods: {
     googleAdsNoPrint () {
-      const googleAutoPlacedAds = this.$el.querySelectorAll('.google-auto-placed');
+      const googleAutoPlacedAds = this.$el.querySelectorAll('.google-auto-placed')
       if (googleAutoPlacedAds) {
-        googleAutoPlacedAds.forEach(googleAutoPlacedAd => {
+        googleAutoPlacedAds.forEach((googleAutoPlacedAd) => {
           googleAutoPlacedAd.classList.add('d-print-none')
         })
-      } else {
-        console.log('no ads')
+      // } else {
+        // console.log('no ads')
       }
     },
 
@@ -32,6 +31,6 @@ export default {
       this.googleAdsNoPrint()
       window.print()
     }
-  },
+  }
 }
 </script>
