@@ -203,9 +203,10 @@ export default {
         this.$store.dispatch('users/authentication/signUp', payload)
           .then((response) => {
             if (response.status === 200) {
-              this.$toast.info(this.$t('signUp.success'), {
-                position: 'bottom-center',
-                duration: 3000
+              this.$root.$bvToast.toast(this.$t('signUp.success'), {
+                title: 'Cuisinier Rebelle',
+                variant: 'info',
+                solid: true
               })
               this.$router.push({ path: '/' })
             } else if (response.response) {
@@ -220,9 +221,10 @@ export default {
             }
           })
       } else {
-        this.$toast.error(this.errors[0], {
-          position: 'bottom-center',
-          duration: 3000
+        this.$root.$bvToast.toast(this.errors[0], {
+          title: 'Cuisinier Rebelle',
+          variant: 'danger',
+          solid: true
         })
       }
     }

@@ -174,9 +174,10 @@ export default {
         }
         try {
           await this.$store.dispatch('users/authentication/passwordReset', payload)
-          this.$toast.success(this.$t('login.password.reset.success', { email: this.email }), {
-            position: 'bottom-center',
-            duration: 3000
+          this.$root.$bvToast.toast(this.$t('login.password.reset.success', { email: this.email }), {
+            title: 'Cuisinier Rebelle',
+            variant: 'success',
+            solid: true
           })
           this.password = null
           this.confirmation = null
@@ -186,9 +187,10 @@ export default {
         }
       }
       if (this.errors.length > 0) {
-        this.$toast.error(this.errors[0], {
-          position: 'bottom-center',
-          duration: 3000
+        this.$root.$bvToast.toast(this.errors[0], {
+          title: 'Cuisinier Rebelle',
+          variant: 'danger',
+          solid: true
         })
       }
     },
@@ -206,9 +208,10 @@ export default {
       } catch (e) {
         this.errors.push(e)
         if (this.errors.length > 0) {
-          this.$toast.error(this.errors[0], {
-            position: 'bottom-center',
-            duration: 3000
+          this.$root.$bvToast.toast(this.errors[0], {
+            title: 'Cuisinier Rebelle',
+            variant: 'danger',
+            solid: true
           })
         }
       }

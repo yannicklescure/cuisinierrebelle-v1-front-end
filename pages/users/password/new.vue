@@ -85,21 +85,24 @@ export default {
         }
         const response = await this.$store.dispatch('users/authentication/requestPasswordReset', payload)
         if (response.user.token !== null) {
-          this.$toast.info(this.$t('login.password.email', { email: response.user.email }), {
-            position: 'bottom-center',
-            duration: 3000
+          this.$root.$bvToast.toast(this.$t('login.password.email', { email: response.user.email }), {
+            title: 'Cuisinier Rebelle',
+            variant: 'info',
+            solid: true
           })
           this.email = null
         } else {
-          this.$toast.error(this.$t('users.password.errors.exist'), {
-            position: 'bottom-center',
-            duration: 3000
+          this.$root.$bvToast.toast(this.$t('users.password.errors.exist'), {
+            title: 'Cuisinier Rebelle',
+            variant: 'danger',
+            solid: true
           })
         }
       } else {
-        this.$toast.error(this.errors[0], {
-          position: 'bottom-center',
-          duration: 3000
+        this.$root.$bvToast.toast(this.errors[0], {
+          title: 'Cuisinier Rebelle',
+          variant: 'danger',
+          solid: true
         })
       }
     }

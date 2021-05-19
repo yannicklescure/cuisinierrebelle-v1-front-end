@@ -90,13 +90,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-const capitalize = (s) => {
-  if (typeof s !== 'string') {
-    return ''
-  }
-  return s.charAt(0).toUpperCase() + s.slice(1)
-}
-
 export default {
   name: 'Login',
   middleware: 'authentication',
@@ -128,6 +121,12 @@ export default {
     ...mapActions({
       fetchNotifications: 'notifications/list'
     }),
+    capitalize (s) {
+      if (typeof s !== 'string') {
+        return ''
+      }
+      return s.charAt(0).toUpperCase() + s.slice(1)
+    },
     isConnecting (value) {
       this.connecting = value
     },
@@ -184,9 +183,10 @@ export default {
       }
       if (this.errors.length > 0) {
         this.error = true
-        this.$toast.error(this.errors[0], {
-          position: 'bottom-center',
-          duration: 3000
+        this.$root.$bvToast.toast(this.errors[0], {
+          title: 'Cuisinier Rebelle',
+          variant: 'danger',
+          solid: true
         })
       } else {
         const payload = {
@@ -197,9 +197,10 @@ export default {
         await this.$store.dispatch('resendConfirmationInstructions', payload)
           .then((result) => {
             if (result.status === 200) {
-              this.$toast.success(this.$t('login.resendConfirmationInstructions', { email: result.data.email }), {
-                position: 'bottom-center',
-                duration: 3000
+              this.$root.$bvToast.toast(this.$t('login.resendConfirmationInstructions', { email: result.data.email }), {
+                title: 'Cuisinier Rebelle',
+                variant: 'success',
+                solid: true
               })
               this.login.email = null
               this.login.password = null
@@ -211,9 +212,10 @@ export default {
           .then(() => {
             if (this.errors.length > 0) {
               this.error = true
-              this.$toast.error(this.errors[0], {
-                position: 'bottom-center',
-                duration: 3000
+              this.$root.$bvToast.toast(this.errors[0], {
+                title: 'Cuisinier Rebelle',
+                variant: 'danger',
+                solid: true
               })
             }
           })
@@ -229,10 +231,10 @@ export default {
           if (response.email === this.login.email) {
             // await this.dispatch('users/sessions/user', null)
             this.fetchNotifications()
-            const firstName = capitalize(response.first_name)
-            this.$toast.success(this.$t('login.welcome', { firstName }), {
-              position: 'bottom-center',
-              duration: 3000
+            this.$root.$bvToast.toast(this.$t('login.welcome', { firstName: this.capitalize(response.first_name) }), {
+              title: 'Cuisinier Rebelle',
+              variant: 'success',
+              solid: true
             })
             this.login.email = null
             this.login.password = null
@@ -250,9 +252,10 @@ export default {
         }
       }
       if (this.errors[0]) {
-        this.$toast.error(this.errors[0], {
-          position: 'bottom-center',
-          duration: 3000
+        this.$root.$bvToast.toast(this.errors[0], {
+          title: 'Cuisinier Rebelle',
+          variant: 'danger',
+          solid: true
         })
       }
     }

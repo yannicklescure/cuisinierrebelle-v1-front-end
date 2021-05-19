@@ -201,9 +201,10 @@ export default {
           })
       } else {
         this.posting = false
-        this.$toast.error(this.errors[0], {
-          position: 'bottom-center',
-          duration: 3000 // Visibility duration in milliseconds
+        this.$root.$bvToast.toast(this.errors[0], {
+          title: 'Cuisinier Rebelle',
+          variant: 'danger',
+          solid: true
         })
       }
     }

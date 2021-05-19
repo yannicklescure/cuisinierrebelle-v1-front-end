@@ -197,13 +197,10 @@ export default {
           })
       } else {
         this.posting = false
-        this.$toast.open({
-          message: this.errors[0],
-          type: 'error', // success, info, warning, error, default
-          // all of other options may go here
-          position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
-          duration: 3000, // Visibility duration in milliseconds
-          dismissible: true
+        this.$root.$bvToast.toast(this.errors[0], {
+          title: 'Cuisinier Rebelle',
+          variant: 'danger',
+          solid: true
         })
       }
     },

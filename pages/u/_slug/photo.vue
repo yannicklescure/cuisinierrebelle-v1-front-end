@@ -106,21 +106,19 @@ export default {
           image: this.photo
         }
         await this.$store.dispatch('users/sessions/photo', payload)
-        this.$toast.info(this.$t('users.settings.photo.success'), {
-          position: 'bottom-center',
-          duration: 3000
+        this.$root.$bvToast.toast(this.$t('users.settings.photo.success'), {
+          title: 'Cuisinier Rebelle',
+          variant: 'info',
+          solid: true
         })
         this.$router.push({
           path: `/u/${this.currentUser.slug}/settings`
         })
       } else {
-        this.$toast.open({
-          message: this.errors[0],
-          type: 'error', // success, info, warning, error, default
-          // all of other options may go here
-          position: 'bottom', // top, bottom, top-right, bottom-right,top-left, bottom-left
-          duration: 3000, // Visibility duration in milliseconds
-          dismissible: true
+        this.$root.$bvToast.toast(this.errors[0], {
+          title: 'Cuisinier Rebelle',
+          variant: 'danger',
+          solid: true
         })
       }
     }

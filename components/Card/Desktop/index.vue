@@ -12,13 +12,22 @@
           class="w-100 p-3 d-flex justify-content-between align-items-center"
           style="background-color: rgba(0,0,0,0.5);"
         >
-          <NuxtLink
-            :to="`/r/${ item.recipe.slug }`"
-            class="text-white"
-          >
-            {{ item.recipe.title }}
+          <NuxtLink :to="`/r/${ item.recipe.slug }`">
+            <div
+              v-b-tooltip.hover
+              class="d-inline-block text-truncate text-white"
+              :style="`max-width: ${dimension.width * 0.7}px`"
+              :title="item.recipe.title"
+            >
+              {{ title }}
+            </div>
           </NuxtLink>
-          <BtnBookmark :item="item" />
+          <div
+            class="d-flex bg-white justify-content-center align-items-center rounded-circle"
+            style="height: 40px; width: 40px;"
+          >
+            <BtnBookmark :item="item" />
+          </div>
         </div>
       </div>
     </div>
@@ -70,8 +79,17 @@ export default {
         width: 0,
         height: 0
       },
-      hover: false
+      hover: false,
+      title: this.item.recipe.title
     }
+  },
+  updated () {
+    this.$nextTick(() => {
+      if (this.hover) {
+        // this.title = this.tuncateString(this.item.recipe.title)
+        // this.title = this.item.recipe.title
+      }
+    })
   },
   mounted () {
     this.$emit('cardReady', this.item.recipe.id)

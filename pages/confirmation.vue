@@ -18,6 +18,13 @@ export default {
       message: null
     }
   },
+  mounted () {
+    if (this.$route.query.confirmation_token) {
+      this.confirmRegistration()
+    } else {
+      this.$router.push({ path: '/login' })
+    }
+  },
   methods: {
     ...mapActions({
       registrationConfirmation: 'registrationConfirmation'
@@ -25,28 +32,22 @@ export default {
     confirmRegistration () {
       this.registrationConfirmation({ token: this.$route.query.confirmation_token })
         .then((response) => {
-          console.log(response)
           if (response.status === 200) {
-            this.$toast.info(this.$t('RegistrationConfirmation.success', { firstName: capitalize(response.data.first_name) }), {
-              position: 'bottom-center',
-              duration: 3000
+            this.$root.$bvToast.toast(this.$t('RegistrationConfirmation.success', { firstName: capitalize(response.data.first_name) }), {
+              title: 'Cuisinier Rebelle',
+              variant: 'info',
+              solid: true
             })
             this.$router.push({ path: '/login' })
           } else {
-            this.$toast.error(response.error, {
-              position: 'bottom-center',
-              duration: 3000
+            this.$root.$bvToast.toast(response.error, {
+              title: 'Cuisinier Rebelle',
+              variant: 'danger',
+              solid: true
             })
             this.$router.push({ path: '/' })
           }
         })
-    }
-  },
-  mounted () {
-    if (this.$route.query.confirmation_token) {
-      this.confirmRegistration()
-    } else {
-      this.$router.push({ path: '/login' })
     }
   }
 }

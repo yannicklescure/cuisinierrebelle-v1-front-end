@@ -94,9 +94,10 @@ export default {
           const response = await this.$store.dispatch('users/sessions/delete', payload)
           // console.log(response)
           if (response.status === 'success') {
-            this.$toast.info(this.$t('userDelete.success'), {
-              position: 'bottom-center',
-              duration: 3000 // Visibility duration in milliseconds
+            this.$root.$bvToast.toast(this.$t('userDelete.success'), {
+              title: 'Cuisinier Rebelle',
+              variant: 'info',
+              solid: true
             })
             // this.$router.push({ name: 'Home' })
             // this.logout()
@@ -112,9 +113,10 @@ export default {
         }
       }
       if (this.errors[0]) {
-        this.$toast.error(this.errors[0], {
-          position: 'bottom-center',
-          duration: 3000
+        this.$root.$bvToast.toast(this.errors[0], {
+          title: 'Cuisinier Rebelle',
+          variant: 'danger',
+          solid: true
         })
       }
     }
