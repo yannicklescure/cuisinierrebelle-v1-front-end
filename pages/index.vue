@@ -17,8 +17,8 @@
       />
       <client-only>
         <Cards v-show="show" :recipes="recipes" />
+        <Loading v-show="!show" />
       </client-only>
-      <Loading v-show="!show" />
     </div>
   </div>
 </template>
