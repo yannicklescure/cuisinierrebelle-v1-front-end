@@ -51,11 +51,6 @@ export default {
       errors: []
     }
   },
-  // computed: {
-  //   ...mapGetters({
-  //     isMobile: 'isMobile'
-  //   })
-  // },
   methods: {
     allowPost () {
       if (this.email) {

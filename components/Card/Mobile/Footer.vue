@@ -1,6 +1,6 @@
 <template>
   <div :class="['card-footer border-0 bg-white p-0']">
-    <CardCta :item="item" />
+    <CardMobileCta :item="item" />
     <div :class="['d-flex flex-column', $device.isMobile ? 'p-0' : 'p-0']">
       <NuxtLink
         :to="`/r/${ item.recipe.slug }`"

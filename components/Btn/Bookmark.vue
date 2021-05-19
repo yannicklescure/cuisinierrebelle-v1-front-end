@@ -1,11 +1,11 @@
 <template>
-  <div :class="['d-flex align-items-center ml-3 text-body']">
+  <div :class="['d-flex align-items-center ml-3', $device.isMobile ? 'text-body' : 'text-white']">
     <div :class="['d-flex align-items-center justify-content-center', { 'flex-column': $device.isMobile }]">
-      <div v-if="isAuthenticated" class="mouse-pointer btn-bookmark" @click="bookmarkIt">
-        <i :class="['material-icons text-body', $device.isMobile ? 'md-32' : 'md-18']">{{ bookmark }}</i>
+      <div v-if="isAuthenticated" :class="['btn-bookmark mouse-pointer', $device.isMobile ? 'text-body' : 'text-white']" @click="bookmarkIt">
+        <i :class="['material-icons', $device.isMobile ? 'text-body' : 'text-white', $device.isMobile ? 'md-32' : 'md-18']">{{ bookmark }}</i>
       </div>
-      <NuxtLink v-else to="/login" class="text-body btn-bookmark">
-        <i :class="['material-icons', $device.isMobile ? 'md-32' : 'md-18']">bookmark_border</i>
+      <NuxtLink v-else to="/login" :class="['btn-bookmark', $device.isMobile ? 'text-body' : 'text-white']">
+        <i :class="['material-icons', $device.isMobile ? 'text-body' : 'text-white', $device.isMobile ? 'md-32' : 'md-18']">bookmark_border</i>
       </NuxtLink>
       <span v-if="false" :class="['text-muted font-weight-lighter small', { 'ml-1': !$device.isMobile }]">{{ bookmarks }}</span>
     </div>

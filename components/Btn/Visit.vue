@@ -1,6 +1,6 @@
 <template>
   <div :class="['text-body d-flex align-items-center justify-content-center', { 'flex-column': $device.isMobile }]">
-    <i :class="['material-icons', $device.isMobile ? 'md-32' : 'md-18']">person_pin</i>
+    <i :class="['material-icons', $device.isMobile ? 'md-32' : 'md-18']">visibility</i>
     <span :class="['text-muted font-weight-lighter small', { 'ml-1': !$device.isMobile }]">{{ views }}</span>
   </div>
 </template>
@@ -8,7 +8,12 @@
 <script>
 export default {
   name: 'BtnVisit',
-  props: ['item'],
+  props: {
+    item: {
+      type: Object,
+      default: null
+    }
+  },
   computed: {
     views () {
       const views = this.item.recipe.views

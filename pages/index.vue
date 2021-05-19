@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Banner v-if="!isAuthenticated" />
+    <client-only>
+      <Banner v-if="!isAuthenticated" />
+    </client-only>
     <div v-if="$fetchState.pending">
       <Loading />
     </div>
@@ -14,11 +16,9 @@
         :image="socialMetaData.image"
       />
       <client-only>
-        <div>
-          <Cards v-if="show" :recipes="recipes" />
-          <Loading v-else />
-        </div>
+        <Cards v-show="show" :recipes="recipes" />
       </client-only>
+      <Loading v-show="!show" />
     </div>
   </div>
 </template>

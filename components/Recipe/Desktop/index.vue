@@ -47,13 +47,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/user',
-      isMobile: 'isMobile'
+      currentUser: 'users/sessions/user'
     })
-  },
-  mounted () {
-    // this.$refs.lazyImage.src = this.$refs.lazyImage.dataset.src
-    // this.$nextTick(() => {})
   }
 }
 </script>

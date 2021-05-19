@@ -27,12 +27,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      currentUser: 'users/sessions/user',
-      isMobile: 'isMobile'
+      currentUser: 'users/sessions/user'
     })
-  },
-  mounted () {
-    // this.$nextTick(() => {})
   }
 }
 </script>

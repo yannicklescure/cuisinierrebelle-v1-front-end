@@ -1,13 +1,13 @@
 <template>
-  <div :class="['d-flex align-items-center text-danger', $device.isMobile ? '' : 'ml-3']">
+  <div :class="['d-flex align-items-center text-danger', $device.isMobile ? '' : 'mr-3']">
     <div :class="['d-flex align-items-center justify-content-center', { 'flex-column': $device.isMobile }]">
-      <div v-if="isAuthenticated" class="mouse-pointer btn-like" @click="likeIt">
+      <div v-if="isAuthenticated" class="d-flex mouse-pointer" @click="likeIt">
         <i :class="['material-icons', liked ? 'text-danger' : 'text-body', $device.isMobile ? 'md-32' : 'md-18']">{{ like }}</i>
       </div>
       <NuxtLink v-else to="/login" class="text-body btn-like">
         <i :class="['material-icons', $device.isMobile ? 'md-32' : 'md-18']">favorite_border</i>
       </NuxtLink>
-      <span v-if="false" :class="['text-muted font-weight-lighter small', { 'ml-1': !$device.isMobile }]">{{ likes }}</span>
+      <span v-if="!$device.isMobile" :class="['text-muted font-weight-lighter small', { 'ml-1': !$device.isMobile }]">{{ likes }}</span>
     </div>
   </div>
 </template>
