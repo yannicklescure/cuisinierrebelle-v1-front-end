@@ -11,7 +11,7 @@
           <div
             v-if="show"
             ref="navbar"
-            class="navbar w-100 p-3 d-flex justify-content-between align-items-center"
+            class="w-100 p-3 d-flex justify-content-between align-items-center"
             style="background-color: rgba(0,0,0,0.5);"
           >
             <NuxtLink :to="`/r/${ item.recipe.slug }`">
