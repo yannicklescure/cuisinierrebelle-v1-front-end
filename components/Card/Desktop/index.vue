@@ -11,7 +11,7 @@
           <div
             v-if="show"
             ref="navbar"
-            class="w-100 p-3 d-flex justify-content-between align-items-center"
+            class="navbar w-100 p-3 d-flex justify-content-between align-items-center"
             style="background-color: rgba(0,0,0,0.5);"
           >
             <NuxtLink :to="`/r/${ item.recipe.slug }`">
@@ -102,35 +102,19 @@ export default {
 </script>
 
 <style>
-.slide-enter-active {
-   -moz-transition-duration: 0.3s;
-   -webkit-transition-duration: 0.3s;
-   -o-transition-duration: 0.3s;
-   transition-duration: 0.3s;
-   -moz-transition-timing-function: ease-in;
-   -webkit-transition-timing-function: ease-in;
-   -o-transition-timing-function: ease-in;
-   transition-timing-function: ease-in;
-}
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: max-height .3s ease;
+    max-height: 1000px;
+  }
 
-.slide-leave-active {
-   -moz-transition-duration: 0.3s;
-   -webkit-transition-duration: 0.3s;
-   -o-transition-duration: 0.3s;
-   transition-duration: 0.3s;
-   -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-   -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-   -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-   transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-}
+  .slide-enter-to, .slide-leave {
+     max-height: 1000px;
+     overflow: hidden;
+  }
 
-.slide-enter-to, .slide-leave {
-   max-height: 72px;
-   overflow: hidden;
-}
-
-.slide-enter, .slide-leave-to {
-   overflow: hidden;
-   max-height: 48px;
-}
+  .slide-enter, .slide-leave-to {
+     overflow: hidden;
+     max-height: 0;
+  }
 </style>
