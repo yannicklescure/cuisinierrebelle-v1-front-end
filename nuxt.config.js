@@ -158,7 +158,7 @@ export default {
     '@forked-prs/nuxt-infinite-scroll-module',
     'vue-social-sharing/nuxt',
     '@nuxtjs/markdownit',
-    '@nuxtjs/toast',
+    // '@nuxtjs/toast',
     '@nuxtjs/google-adsense',
     "@nuxtjs/robots",
     '@nuxtjs/sitemap'
@@ -253,9 +253,9 @@ export default {
     defaultLocale: 'fr',
   },
 
-  toast: {
-    position: 'bottom-center',
-  },
+  // toast: {
+  //   position: 'bottom-center',
+  // },
 
   // https://pwa.nuxtjs.org/manifest
   pwa: {
