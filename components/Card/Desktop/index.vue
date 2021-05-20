@@ -25,7 +25,7 @@
               </div>
             </NuxtLink>
             <div
-              class="d-flex bg-white justify-content-center align-items-center rounded-circle"
+              class="d-flex bg-light justify-content-center align-items-center rounded-circle"
               style="height: 40px; width: 40px;"
             >
               <BtnBookmark :item="item" />
