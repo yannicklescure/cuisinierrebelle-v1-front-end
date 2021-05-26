@@ -4,13 +4,14 @@
     :class="['d-print-none navbar fixed-top d-flex px-3 py-2 justify-content-between align-items-center bg-white']"
   >
     <div class="d-flex align-items-center">
-      <div
+      <NuxtLink
+        to="/"
         class="navbar-brand d-flex align-items-center text-body mouse-pointer"
-        @click="scroll2Top"
+        @click.native="scroll2Top"
       >
         <img src="~/assets/img/favicon-32x32.png" width="32" height="32" class="mr-1">
         <span>{{ $t('navbar.brand') }}</span>
-      </div>
+      </NuxtLink>
     </div>
     <div class="form-group  d-flex flex-grow-1">
       <input
@@ -201,9 +202,10 @@ export default {
         if (window.scrollY > 0) {
           scroll()
         }
-      } else {
-        this.$router.push({ path: '/' })
       }
+      // } else {
+      //   this.$router.push({ path: '/' })
+      // }
       this.fetchRecipes()
     },
     handleScroll (event) {
