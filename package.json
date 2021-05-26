@@ -55,6 +55,7 @@
     "vue-script2": "^2.1.0",
     "vue-social-sharing": "^3.0.7",
     "vuejs-dialog": "^1.4.2",
+    "vuex-multi-tab-state": "^1.0.16",
     "vuex-persistedstate": "^4.0.0-beta.3",
     "webp-loader": "^0.6.0"
   },
