@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!currentUser.freemium" class="w-100 my-5">
+  <div v-if="!currentUser.freemium" class="w-100 my-3">
     <adsbygoogle
       :ad-style="{ display: 'block' }"
       ad-slot="7782275531"

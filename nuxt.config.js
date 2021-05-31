@@ -159,7 +159,6 @@ export default {
     '@forked-prs/nuxt-infinite-scroll-module',
     'vue-social-sharing/nuxt',
     '@nuxtjs/markdownit',
-    // '@nuxtjs/toast',
     '@nuxtjs/google-adsense',
     "@nuxtjs/robots",
     '@nuxtjs/sitemap'

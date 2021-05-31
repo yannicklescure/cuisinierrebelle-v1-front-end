@@ -50,15 +50,12 @@ export default {
       }
     },
     show () {
-      // if (this.isAuthenticated) {
-      // return this.currentUser.likes && this.recipes.length > 0
       return this.recipes.length > 0
-      // } else if (process.client) {
-      // console.log(window.scrollY)
-      // return window.scrollY > 0
-      // } else {
-      //   return false
-      // }
+    }
+  },
+  watch: {
+    $route (to, from) {
+      this.$fetch()
     }
   },
   methods: {

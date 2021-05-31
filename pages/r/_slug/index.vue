@@ -6,6 +6,8 @@
       :image="socialMetaData.image"
     />
     <client-only>
+      <Ads v-if="!currentUser.freemium" />
+
       <div v-if="$device.isMobile">
         <RecipeMobile v-if="dimension.width > 0" :item="item" :dimension="dimension" />
       </div>
@@ -17,7 +19,7 @@
 
       <BtnSocialSharing v-if="$device.isDesktop" :item="item" />
 
-      <Ads />
+      <Ads v-if="!currentUser.freemium" />
 
       <OtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
 
@@ -55,7 +57,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      // currentUser: 'users/sessions/user',
+      currentUser: 'users/sessions/user',
       // recipe: 'recipes/recipe',
       recipes: 'recipes/list',
       timestamp: 'timestamp'

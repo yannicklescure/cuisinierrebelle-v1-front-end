@@ -43,8 +43,8 @@
     <div class="d-flex order-0 align-items-start justify-content-between my-2 mb-md-0 d-print-none">
       <div class="d-flex order-0 align-items-start">
         <BtnVisit :item="item" />
-        <BtnComment :item="item" />
-        <BtnShare :item="item" />
+        <BtnComment :item="item" class="ml-3" />
+        <BtnShare :item="item" class="ml-3" />
         <div v-if="isRecipeOwner" class="d-print-none ml-3">
           <NuxtLink :to="`/r/${item.recipe.slug}/edit`" class="text-body text-capitalize text-decoration-none">
             <i :class="['material-icons', 'md-32']">edit</i>
@@ -53,7 +53,7 @@
       </div>
       <div class="d-flex order-1 align-items-end">
         <BtnLike :item="item" />
-        <BtnBookmark :item="item" />
+        <BtnBookmark :item="item" class="ml-3" />
       </div>
     </div>
   </div>
