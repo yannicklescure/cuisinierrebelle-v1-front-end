@@ -132,10 +132,15 @@ export default {
       icons: {
         bookmarks: 'bookmark',
         notifications: 'notifications_none'
-      }
+      },
+      refresh: true
     }
   },
   async fetch () {
+    this.refresh = this.timestamp !== null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
+    if (this.refresh === true) {
+      await this.getStoreData()
+    }
     if (this.isAuthenticated) {
       await this.refreshAccessToken()
       this.fetchNotifications()
@@ -146,7 +151,8 @@ export default {
       bookmarks: 'users/sessions/bookmarks',
       currentUser: 'users/sessions/user',
       isAuthenticated: 'users/authentication/isAuthenticated',
-      notifications: 'notifications/listSorted'
+      notifications: 'notifications/listSorted',
+      timestamp: 'timestamp'
     }),
     isScrollTop () {
       return true
@@ -166,15 +172,14 @@ export default {
     window.removeEventListener('scroll', this.handleScroll)
   },
   mounted () {
-    this.fetchRecipes()
     this.$store.dispatch('navbarHeight', parseInt(this.$refs.navbar.offsetHeight))
-    // window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
     ...mapActions({
       fetchNotifications: 'notifications/list',
       fetchRecipes: 'recipes/list',
-      refreshAccessToken: 'users/sessions/refreshAccessToken'
+      refreshAccessToken: 'users/sessions/refreshAccessToken',
+      getStoreData: 'getStoreData'
     }),
     onClick (path) {
       this.$refs.dropdown.hide(true)
@@ -190,6 +195,7 @@ export default {
       }
     },
     scroll2Top () {
+      this.$fetch()
       if (this.$route.path === '/') {
         const scroll = () => {
           const scrollOptions = {
@@ -206,7 +212,6 @@ export default {
       // } else {
       //   this.$router.push({ path: '/' })
       // }
-      this.fetchRecipes()
     },
     handleScroll (event) {
       // Code to be executed when the window is scrolled

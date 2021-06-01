@@ -29,9 +29,14 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Home',
   layout: 'recipes',
+  data () {
+    return {
+      refresh: true
+    }
+  },
   async fetch () {
-    const refresh = this.timestamp !== null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
-    if (refresh) {
+    this.refresh = this.timestamp !== null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
+    if (this.refresh === true) {
       await this.getStoreData()
     }
   },

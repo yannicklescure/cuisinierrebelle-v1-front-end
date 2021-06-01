@@ -150,6 +150,10 @@ export default {
     }
   },
   async fetch () {
+    this.refresh = this.timestamp !== null ? new Date().getTime() - this.timestamp > 60 * 1000 * 3 : true
+    if (this.refresh === true) {
+      await this.getStoreData()
+    }
     if (this.isAuthenticated) {
       await this.refreshAccessToken()
       this.fetchNotifications()
@@ -160,7 +164,8 @@ export default {
       authorization: 'users/sessions/authorization',
       currentUser: 'users/sessions/user',
       isAuthenticated: 'users/authentication/isAuthenticated',
-      notifications: 'notifications/listSorted'
+      notifications: 'notifications/listSorted',
+      timestamp: 'timestamp'
     }),
     isScrollTop () {
       return true
@@ -189,6 +194,7 @@ export default {
   methods: {
     ...mapActions({
       fetchNotifications: 'notifications/list',
+      getStoreData: 'getStoreData',
       refreshAccessToken: 'users/sessions/refreshAccessToken'
     }),
     getNotifications () {
@@ -215,7 +221,8 @@ export default {
       this.inputMode()
       this.show = false
     },
-    async scroll2Top () {
+    scroll2Top () {
+      this.$fetch()
       if (this.$route.path === '/') {
         const scroll = () => {
           const scrollOptions = {
@@ -226,9 +233,9 @@ export default {
           window.scrollTo(scrollOptions)
         }
         if (window.scrollY > 0) {
-          await scroll()
+          scroll()
         }
-        this.$store.dispatch('recipes/list', {})
+        // this.$store.dispatch('recipes/list', {})
       } else {
         this.$router.push({ path: '/' })
       }
