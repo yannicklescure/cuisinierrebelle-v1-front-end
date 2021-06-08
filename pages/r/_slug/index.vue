@@ -19,7 +19,7 @@
 
       <BtnSocialSharing v-if="$device.isDesktop" :item="item" />
 
-      <Ads v-if="!currentUser.freemium" />
+      <Ads v-if="!currentUser.freemium && false" />
 
       <OtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
 
