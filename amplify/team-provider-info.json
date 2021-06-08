@@ -1,15 +1,23 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-cuisinierrebelle-dev-115634-authRole",
-      "UnauthRoleArn": "arn:aws:iam::201176423394:role/amplify-cuisinierrebelle-dev-115634-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::201176423394:role/amplify-cuisinierrebelle-dev-115634-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-cuisinierrebelle-dev-115634-deployment",
-      "UnauthRoleName": "amplify-cuisinierrebelle-dev-115634-unauthRole",
-      "StackName": "amplify-cuisinierrebelle-dev-115634",
-      "StackId": "arn:aws:cloudformation:us-east-1:201176423394:stack/amplify-cuisinierrebelle-dev-115634/1b47f660-c872-11eb-9910-0e2a8c6e8545",
-      "AmplifyAppId": "d394071nukt629"
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-cuisinierrebelle-dev-115634-authRole",
+            "UnauthRoleArn": "arn:aws:iam::201176423394:role/amplify-cuisinierrebelle-dev-115634-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::201176423394:role/amplify-cuisinierrebelle-dev-115634-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-cuisinierrebelle-dev-115634-deployment",
+            "UnauthRoleName": "amplify-cuisinierrebelle-dev-115634-unauthRole",
+            "StackName": "amplify-cuisinierrebelle-dev-115634",
+            "StackId": "arn:aws:cloudformation:us-east-1:201176423394:stack/amplify-cuisinierrebelle-dev-115634/1b47f660-c872-11eb-9910-0e2a8c6e8545",
+            "AmplifyAppId": "d394071nukt629"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d394071nukt629",
+                    "type": "manual"
+                }
+            }
+        }
     }
-  }
 }
