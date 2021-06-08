@@ -16,7 +16,7 @@ frontend:
     paths:
       - node_modules/**/*
   customHeaders:
-     - pattern: '**/*'
-      headers:
+      - pattern: '**/*'
+    headers:
       - key: 'Cache-Control'
-       value: 'public, max-age=31536000, immutable'
+    value: 'public, max-age=31536000, immutable'
