@@ -50,6 +50,11 @@ export default {
           content: this.title
         },
         {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://www.cuisinierrebelle.com${this.$route.path}`
+        },
+        {
           hid: 'og:title',
           property: 'og:title',
           content: `${this.title}`
