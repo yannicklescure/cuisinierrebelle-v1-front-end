@@ -98,7 +98,7 @@ export default {
       {
         hid: 'canonical',
         rel: 'canonical',
-        href: `https://www.cuisinierrebelle.com`
+        href: 'https://www.cuisinierrebelle.com'
       }
     ]
   },

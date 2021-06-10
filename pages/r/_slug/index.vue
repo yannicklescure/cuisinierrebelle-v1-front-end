@@ -6,7 +6,7 @@
       :image="socialMetaData.image"
     />
     <client-only>
-      <Ads v-if="!currentUser.freemium" />
+      <Ads v-if="!currentUser.freemium && false" />
 
       <div v-if="$device.isMobile">
         <RecipeMobile v-if="dimension.width > 0" :item="item" :dimension="dimension" />

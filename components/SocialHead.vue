@@ -74,6 +74,13 @@ export default {
           property: 'og:image:alt',
           content: this.title
         }
+      ],
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `https://www.cuisinierrebelle.com${this.$route.path}`
+        }
       ]
     }
   }
