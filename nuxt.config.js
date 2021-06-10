@@ -113,8 +113,7 @@ export default {
     { src: '~/plugins/axios.js' },
     { src: '~/plugins/vuejs-dialog.client.js' },
     { src: '~/plugins/persistedState.client.js' },
-    { src: '~/plugins/multiTabState.client.js' },
-    { src: '~/plugins/amplify.client.js' }
+    { src: '~/plugins/multiTabState.client.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
