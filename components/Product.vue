@@ -1,22 +1,24 @@
 <template>
   <div ref="product" class="card p-2 d-flex flex-column flex-grow-1 justify-content-between" style="height: 100%">
     <div class="d-flex flex-column">
-      <img
-        :src="product.image.card.url"
-        alt=""
-        :width="dimension.width"
-        :height="dimension.height"
-        style="object-fit: cover"
-        class="card-img-top"
-      >
-      <div class="mt-2 font-weight-normal">
+      <a :href="product.url" target="_blank">
+        <img
+          :src="product.image.card.url"
+          alt=""
+          :width="dimension.width"
+          :height="dimension.height"
+          style="object-fit: cover"
+          class="card-img-top"
+        >
+      </a>
+      <a :href="product.url" target="_blank" class="mt-2 font-weight-normal text-body">
         {{ product.title }}
-      </div>
+      </a>
       <div class="font-weight-light mt-2">
         {{ product.description }}
       </div>
     </div>
-    <a :href="product.url" target="_blank" class="mt-2 btn btn-info d-flex justify-content-center align-items-center">
+    <a v-if="false" :href="product.url" target="_blank" class="mt-2 btn btn-info d-flex justify-content-center align-items-center">
       <span class="mr-2 material-icons md-18">
         open_in_new
       </span>
