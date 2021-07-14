@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid px-md-5">
+  <div class="container-fluid pt-2 px-md-5">
     <div class="row">
       <div v-for="(item, index) in items" :key="index" class="col-12 col-md-4 col-lg-3">
         <Card :item="item" />

@@ -6,7 +6,7 @@
       :image="socialMetaData.image"
     />
     <client-only>
-      <Ads v-if="!currentUser.freemium && false" />
+      <Ads v-if="!currentUser.freemium" />
 
       <div v-if="$device.isMobile">
         <RecipeMobile v-if="dimension.width > 0" :item="item" :dimension="dimension" />
@@ -19,7 +19,7 @@
 
       <BtnSocialSharing v-if="$device.isDesktop" :item="item" />
 
-      <Ads v-if="!currentUser.freemium && false" />
+      <Ads v-if="!currentUser.freemium" />
 
       <OtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
 
@@ -37,9 +37,6 @@ const truncate = (str, n) => {
 
 export default {
   name: 'Recipe',
-  // async asyncData ({ $axios, params }) {
-  //   return { item: await $axios.$get(`/v1/recipes/${params.slug}`) }
-  // },
   data () {
     return {
       dimension: {

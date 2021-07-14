@@ -1,5 +1,5 @@
 <template>
-  <div id="default" ref="default" class="d-flex flex-column justify-content-between align-items-between">
+  <div id="default" ref="default" class="d-flex flex-column h-100 justify-content-between align-items-between">
     <client-only>
       <NavbarMobile v-if="$device.isMobile" />
       <NavbarDesktop v-else />

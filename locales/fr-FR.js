@@ -258,7 +258,7 @@ export default async (context, locale) => {
     },
     footer: {
       madeWith: 'Fait avec',
-      brand: 'par Cuisinier Rebelle &copy; {year}',
+      brand: 'par Cuisinier Rebelle',
       sitemap: 'Plan du site',
       privacyPolicy: 'Politique de confidentialité',
       help: 'Aide',
