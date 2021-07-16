@@ -2,6 +2,7 @@
   <div v-if="!currentUser.freemium" class="w-100 my-3">
     <adsbygoogle
       :ad-style="{ display: 'block' }"
+      :ad-format="'auto'"
       :ad-slot="adSlot"
     />
   </div>
