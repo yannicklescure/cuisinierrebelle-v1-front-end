@@ -2,7 +2,7 @@
   <div v-if="!currentUser.freemium" class="w-100 my-3">
     <adsbygoogle
       :ad-style="{ display: 'block' }"
-      ad-slot="2500166878"
+      :ad-slot="adSlot"
     />
   </div>
 </template>
@@ -12,6 +12,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Ads',
+  props: {
+    adSlot: {
+      type: String,
+      default: null
+    }
+  },
   computed: {
     ...mapGetters({
       currentUser: 'users/sessions/user'

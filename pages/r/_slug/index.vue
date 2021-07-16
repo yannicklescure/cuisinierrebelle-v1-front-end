@@ -6,7 +6,7 @@
       :image="socialMetaData.image"
     />
     <client-only>
-      <Ads v-if="!currentUser.freemium" />
+      <Ads v-if="!currentUser.freemium" adSlot="9731748072" />
 
       <div v-if="$device.isMobile">
         <RecipeMobile v-if="dimension.width > 0" :item="item" :dimension="dimension" />
@@ -19,7 +19,7 @@
 
       <BtnSocialSharing v-if="$device.isDesktop" :item="item" />
 
-      <Ads v-if="!currentUser.freemium" />
+      <Ads v-if="!currentUser.freemium" adSlot="5630515601" />
 
       <OtherRecipes v-if="recipes.length > 2" :recipes="recipes" />
 
